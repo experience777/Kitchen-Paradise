@@ -1,0 +1,4008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Paradise — Cafe &amp; Bakery</title>
+<meta name="description" content="Wood-fired pizza, hand-crafted burgers, fresh-baked pastries and celebration cakes. Order online from Kitchen Paradise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KITCHEN PARADISE — Design System
+   Palette: espresso #2B1B14, ivory #FAF6EF, brick #8B2E2E,
+            gold #C9A15A, olive #3F5D3A
+   Type: 'Fraunces' (display serif) + 'Inter' (UI sans)
+============================================================ */
+
+:root {
+  --espresso: #2B1B14;
+  --espresso-soft: #3D291F;
+  --ivory: #FAF6EF;
+  --ivory-dim: #F1EBDD;
+  --card: #FFFFFF;
+  --brick: #8B2E2E;
+  --brick-dark: #6E2222;
+  --gold: #C9A15A;
+  --gold-soft: #E4CFA0;
+  --olive: #3F5D3A;
+  --ink: #241712;
+  --ink-soft: #5C4B41;
+  --line: #E4DACB;
+  --line-strong: #D8CAB4;
+  --shadow-sm: 0 1px 2px rgba(43,27,20,0.06), 0 1px 1px rgba(43,27,20,0.04);
+  --shadow-md: 0 6px 20px rgba(43,27,20,0.10);
+  --shadow-lg: 0 16px 48px rgba(43,27,20,0.18);
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+  --maxw: 1240px;
+  --header-h: 76px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  color: var(--espresso);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+@media (max-width: 640px) { .container { padding: 0 20px; } }
+
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--brick); color: var(--ivory); }
+.btn-primary:hover { background: var(--brick-dark); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--espresso); border-color: var(--espresso); }
+.btn-secondary:hover { background: var(--espresso); color: var(--ivory); }
+.btn-gold { background: var(--gold); color: var(--espresso); }
+.btn-gold:hover { background: #B98F45; box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.btn-ghost { background: var(--ivory-dim); color: var(--espresso); }
+.btn-ghost:hover { background: var(--line-strong); }
+.btn-block { width: 100%; }
+.btn-sm { padding: 9px 18px; font-size: 0.85rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+/* ============ HEADER ============ */
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(10px) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+  height: var(--header-h);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(250, 246, 239, 0.98);
+  box-shadow: 0 2px 16px rgba(43,27,20,0.08);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%;
+  gap: 24px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--espresso);
+  flex-shrink: 0;
+}
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--espresso);
+  color: var(--gold-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.brand small { display: block; font-family: 'Inter', sans-serif; font-size: 0.62rem; letter-spacing: 0.09em; color: var(--ink-soft); font-weight: 500; margin-top: -2px; }
+
+.main-nav { display: flex; align-items: center; gap: 4px; }
+.main-nav a {
+  padding: 9px 15px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: background 0.18s ease, color 0.18s ease;
+  position: relative;
+}
+.main-nav a:hover { color: var(--espresso); background: var(--ivory-dim); }
+.main-nav a.active { color: var(--espresso); font-weight: 600; }
+
+.header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.icon-btn {
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--espresso);
+  position: relative;
+  transition: background 0.18s ease;
+}
+.icon-btn:hover { background: var(--ivory-dim); }
+.icon-btn svg { width: 21px; height: 21px; }
+.cart-count {
+  position: absolute; top: 2px; right: 2px;
+  background: var(--brick);
+  color: var(--ivory);
+  font-size: 0.62rem;
+  font-weight: 700;
+  min-width: 17px; height: 17px;
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3px;
+  border: 2px solid var(--ivory);
+}
+.hamburger-btn { display: none; }
+
+/* Search overlay */
+.search-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(36, 23, 18, 0.55);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 90px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+.search-overlay.open { opacity: 1; visibility: visible; }
+.search-box {
+  background: var(--card);
+  width: min(560px, 90vw);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  transform: translateY(-12px);
+  transition: transform 0.22s ease;
+}
+.search-overlay.open .search-box { transform: translateY(0); }
+.search-box input {
+  width: 100%; border: none; outline: none;
+  padding: 16px 18px;
+  font-size: 1.05rem;
+  background: transparent;
+  color: var(--ink);
+}
+.search-results { max-height: 60vh; overflow-y: auto; border-top: 1px solid var(--line); margin-top: 4px; }
+.search-result-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-s);
+  transition: background 0.15s ease;
+}
+.search-result-item:hover { background: var(--ivory-dim); }
+.search-result-item img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.search-result-item .sri-name { font-weight: 600; font-size: 0.92rem; color: var(--ink); }
+.search-result-item .sri-price { font-size: 0.82rem; color: var(--ink-soft); }
+.search-empty { padding: 24px 14px; text-align: center; color: var(--ink-soft); font-size: 0.9rem; }
+
+/* Mobile nav drawer */
+.mobile-drawer {
+  position: fixed; inset: 0; z-index: 400;
+  visibility: hidden;
+}
+.mobile-drawer.open { visibility: visible; }
+.mobile-drawer-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(36,23,18,0.5);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.mobile-drawer.open .mobile-drawer-backdrop { opacity: 1; }
+.mobile-drawer-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(320px, 84vw);
+  background: var(--ivory);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex; flex-direction: column;
+  padding: 22px;
+}
+.mobile-drawer.open .mobile-drawer-panel { transform: translateX(0); }
+.mobile-drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.mobile-drawer nav { display: flex; flex-direction: column; gap: 2px; }
+.mobile-drawer nav a {
+  padding: 14px 10px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.mobile-drawer-cta { margin-top: auto; padding-top: 20px; }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 64px 0 88px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--brick);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+.hero-eyebrow::before { content: ''; width: 22px; height: 1.5px; background: var(--brick); display: inline-block; }
+.hero h1 {
+  font-size: clamp(2.4rem, 4.6vw, 3.7rem);
+  line-height: 1.06;
+  margin-bottom: 22px;
+}
+.hero h1 em { font-style: italic; color: var(--brick); }
+.hero-desc {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin-bottom: 34px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+.hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; }
+.trust-item svg { width: 22px; height: 22px; color: var(--olive); flex-shrink: 0; }
+.trust-item span { font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); }
+
+.hero-visual { position: relative; }
+.hero-visual-frame {
+  position: relative;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4/4.6;
+}
+.hero-visual-frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-badge {
+  position: absolute; bottom: -22px; left: -22px;
+  background: var(--card);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-lg);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px;
+  max-width: 240px;
+}
+.hero-badge-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold-soft);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+.hero-badge strong { display: block; font-size: 0.92rem; color: var(--espresso); }
+.hero-badge span { font-size: 0.78rem; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { order: -1; }
+  .hero-badge { left: 12px; bottom: -18px; }
+}
+
+/* ============ SECTION HEADINGS ============ */
+.section { padding: 88px 0; }
+.section-alt { background: var(--ivory-dim); }
+.section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 24px; margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+.section-head h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); }
+.section-head p { color: var(--ink-soft); font-size: 1rem; max-width: 460px; margin-top: 10px; }
+.section-tag { color: var(--brick); font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; display: block; }
+
+/* ============ MENU / FILTERS ============ */
+.menu-layout { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+.category-rail {
+  position: sticky; top: calc(var(--header-h) + 24px);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.category-rail button {
+  text-align: left;
+  background: transparent; border: none;
+  padding: 11px 14px;
+  border-radius: var(--radius-s);
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  border-left: 2.5px solid transparent;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.category-rail button:hover { background: var(--ivory-dim); color: var(--ink); }
+.category-rail button.active { color: var(--brick); border-left-color: var(--brick); background: var(--ivory-dim); font-weight: 600; }
+.category-rail .cat-count { font-size: 0.76rem; color: var(--ink-soft); font-weight: 400; }
+
+.mobile-cat-scroll {
+  display: none;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-cat-scroll::-webkit-scrollbar { display: none; }
+.mobile-cat-scroll button {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.mobile-cat-scroll button.active { background: var(--espresso); border-color: var(--espresso); color: var(--ivory); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.results-meta { color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 18px; }
+
+/* ============ PRODUCT CARD ============ */
+.product-card {
+  background: var(--card);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+.product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.pc-image-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--ivory-dim); }
+.pc-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.product-card:hover .pc-image-wrap img { transform: scale(1.06); }
+.pc-veg-badge {
+  position: absolute; top: 12px; left: 12px;
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  border: 2px solid;
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+}
+.pc-veg-badge.veg { border-color: var(--olive); }
+.pc-veg-badge.veg::after { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--olive); }
+.pc-veg-badge.nonveg { border-color: var(--brick); }
+.pc-veg-badge.nonveg::after { content: ''; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid var(--brick); }
+.pc-rating {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(43,27,20,0.82);
+  color: var(--ivory);
+  font-size: 0.76rem; font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+  display: flex; align-items: center; gap: 4px;
+}
+.pc-rating svg { width: 11px; height: 11px; fill: var(--gold-soft); }
+.pc-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.pc-cat { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; color: var(--brick); text-transform: uppercase; margin-bottom: 6px; }
+.pc-name { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--espresso); margin-bottom: 6px; line-height: 1.25; }
+.pc-desc { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 16px; flex: 1; line-height: 1.5; }
+.pc-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pc-price { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--espresso); }
+.pc-price small { font-size: 0.7rem; font-weight: 400; color: var(--ink-soft); }
+.pc-add-btn {
+  background: var(--espresso); color: var(--ivory);
+  border: none; border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.84rem; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+.pc-add-btn:hover { background: var(--brick); }
+.pc-add-btn.added { background: var(--olive); }
+.pc-add-btn:active { transform: scale(0.96); }
+.pc-add-btn svg { width: 15px; height: 15px; }
+
+.no-results { text-align: center; padding: 60px 20px; color: var(--ink-soft); }
+.no-results svg { width: 52px; height: 52px; color: var(--line-strong); margin-bottom: 16px; }
+
+@media (max-width: 860px) {
+  .menu-layout { grid-template-columns: 1fr; }
+  .category-rail { display: none; }
+  .mobile-cat-scroll { display: flex; }
+}
+
+/* ============ CUSTOMIZATION MODAL ============ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(36,23,18,0.55);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+@media (min-width: 720px) {
+  .modal-overlay { align-items: center; padding: 24px; }
+}
+.custom-modal {
+  background: var(--ivory);
+  width: 100%;
+  max-width: 640px;
+  max-height: 92vh;
+  border-radius: 24px 24px 0 0;
+  display: flex; flex-direction: column;
+  transform: translateY(30px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+@media (min-width: 720px) {
+  .custom-modal { border-radius: var(--radius-l); max-height: 88vh; }
+}
+.modal-overlay.open .custom-modal { transform: translateY(0); }
+
+.modal-hero { position: relative; height: 200px; flex-shrink: 0; }
+.modal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.modal-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+.modal-close svg { width: 18px; height: 18px; color: var(--espresso); }
+.modal-body { padding: 24px 26px 8px; overflow-y: auto; flex: 1; }
+.modal-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+.modal-title-row h3 { font-size: 1.4rem; }
+.modal-base-price { font-family: 'Fraunces', serif; font-weight: 600; color: var(--brick); font-size: 1.15rem; white-space: nowrap; }
+.modal-desc { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 22px; }
+
+.opt-group { margin-bottom: 26px; }
+.opt-group-label { display: flex; align-items: baseline; gap: 8px; font-weight: 600; color: var(--espresso); font-size: 0.98rem; margin-bottom: 12px; }
+.opt-group-label .req { font-size: 0.72rem; color: var(--brick); font-weight: 600; }
+.opt-group-label .optional-tag { font-size: 0.75rem; color: var(--ink-soft); font-weight: 400; }
+
+.opt-list { display: flex; flex-direction: column; gap: 8px; }
+.opt-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--card);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  gap: 12px;
+}
+.opt-row:hover { border-color: var(--line-strong); }
+.opt-row.selected { border-color: var(--brick); background: #FBF1EE; }
+.opt-row-left { display: flex; align-items: center; gap: 12px; }
+.opt-control {
+  width: 20px; height: 20px;
+  border: 2px solid var(--line-strong);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.opt-control.radio { border-radius: 50%; }
+.opt-control.checkbox { border-radius: 5px; }
+.opt-row.selected .opt-control { border-color: var(--brick); background: var(--brick); }
+.opt-control svg { width: 11px; height: 11px; color: var(--ivory); opacity: 0; transition: opacity 0.12s ease; }
+.opt-row.selected .opt-control svg { opacity: 1; }
+.opt-control.radio .radio-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ivory); opacity: 0; transition: opacity 0.12s ease; }
+.opt-row.selected .opt-control.radio .radio-dot { opacity: 1; }
+.opt-name { font-size: 0.92rem; color: var(--ink); font-weight: 500; }
+.opt-price { font-size: 0.86rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+.opt-price.free { color: var(--olive); }
+
+.opt-text-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-s);
+  font-size: 0.92rem;
+  background: var(--card);
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+.opt-text-input:focus { border-color: var(--brick); outline: none; }
+
+.qty-selector { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
+.qty-label { font-weight: 600; color: var(--espresso); font-size: 0.98rem; }
+.qty-controls { display: flex; align-items: center; gap: 0; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; }
+.qty-controls button {
+  width: 38px; height: 38px;
+  background: var(--card); border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 600; color: var(--espresso);
+  transition: background 0.15s ease;
+}
+.qty-controls button:hover { background: var(--ivory-dim); }
+.qty-controls button:disabled { opacity: 0.35; cursor: not-allowed; }
+.qty-controls span { min-width: 36px; text-align: center; font-weight: 700; font-size: 1rem; }
+
+.modal-footer {
+  padding: 18px 26px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--ivory);
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 16px;
+}
+.modal-total { flex: 1; }
+.modal-total .mt-label { font-size: 0.76rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.modal-total .mt-value { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--espresso); }
+
+/* ============ CART DRAWER ============ */
+.cart-drawer-overlay {
+  position: fixed; inset: 0; z-index: 550;
+  background: rgba(36,23,18,0.5);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.cart-drawer-overlay.open { opacity: 1; visibility: visible; }
+.cart-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 551;
+  width: min(440px, 100vw);
+  background: var(--ivory);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex; flex-direction: column;
+}
+.cart-drawer.open { transform: translateX(0); }
+.cart-header {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0;
+}
+.cart-header h3 { font-size: 1.3rem; }
+.cart-items { flex: 1; overflow-y: auto; padding: 8px 24px; }
+.cart-item {
+  display: flex; gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-item img { width: 76px; height: 76px; border-radius: var(--radius-s); object-fit: cover; flex-shrink: 0; }
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-weight: 600; font-size: 0.95rem; color: var(--espresso); margin-bottom: 3px; }
+.cart-item-custom { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.5; margin-bottom: 8px; }
+.cart-item-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cart-item-price { font-weight: 700; color: var(--espresso); font-size: 0.92rem; }
+.cart-qty-controls { display: flex; align-items: center; gap: 0; border: 1.5px solid var(--line); border-radius: 999px; }
+.cart-qty-controls button {
+  width: 28px; height: 28px; background: transparent; border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; font-weight: 600; color: var(--espresso);
+}
+.cart-qty-controls button:hover { background: var(--ivory-dim); }
+.cart-qty-controls span { min-width: 24px; text-align: center; font-size: 0.86rem; font-weight: 700; }
+.cart-item-remove {
+  background: none; border: none; color: var(--ink-soft);
+  font-size: 0.78rem; text-decoration: underline;
+  padding: 0; margin-top: 8px;
+}
+.cart-item-remove:hover { color: var(--brick); }
+
+.cart-empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); }
+.cart-empty svg { width: 56px; height: 56px; color: var(--line-strong); margin-bottom: 18px; }
+.cart-empty p { margin-bottom: 20px; }
+
+.cart-summary { padding: 18px 24px; border-top: 1px solid var(--line); flex-shrink: 0; }
+.summary-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 9px; }
+.summary-row.total { font-size: 1.1rem; font-weight: 700; color: var(--espresso); margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-strong); font-family: 'Fraunces', serif; }
+.summary-row .discount-val { color: var(--olive); }
+.cart-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+
+/* ============ CHECKOUT ============ */
+.checkout-overlay {
+  position: fixed; inset: 0; z-index: 700;
+  background: var(--ivory);
+  overflow-y: auto;
+  transform: translateY(16px);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+.checkout-overlay.open { opacity: 1; visibility: visible; transform: translateY(0); }
+#confirmOverlay { z-index: 720; }
+#confirmOverlay.open { z-index: 720; }
+.checkout-topbar {
+  position: sticky; top: 0; z-index: 5;
+  background: rgba(250,246,239,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+.checkout-topbar .container { display: flex; align-items: center; gap: 16px; }
+.checkout-back { display: flex; align-items: center; gap: 8px; background: none; border: none; font-weight: 600; color: var(--espresso); font-size: 0.95rem; }
+.checkout-back svg { width: 18px; height: 18px; }
+.checkout-body { padding: 44px 0 100px; }
+.checkout-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+.checkout-form-card, .checkout-summary-card {
+  background: var(--card);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.checkout-form-card h3, .checkout-summary-card h3 { font-size: 1.2rem; margin-bottom: 20px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-field { margin-bottom: 16px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--espresso); margin-bottom: 7px; }
+.form-field input, .form-field textarea {
+  width: 100%; padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-s);
+  font-size: 0.92rem;
+  background: var(--ivory);
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+.form-field input:focus, .form-field textarea:focus { border-color: var(--brick); outline: none; background: var(--card); }
+.form-field textarea { resize: vertical; min-height: 80px; }
+.form-error { color: var(--brick); font-size: 0.78rem; margin-top: 5px; display: none; }
+.form-field.invalid input, .form-field.invalid textarea { border-color: var(--brick); }
+.form-field.invalid .form-error { display: block; }
+
+.payment-options { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.payment-option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.payment-option:hover { border-color: var(--line-strong); }
+.payment-option.selected { border-color: var(--brick); background: #FBF1EE; }
+.payment-option .opt-control { flex-shrink: 0; }
+.payment-option-info strong { display: block; font-size: 0.92rem; color: var(--ink); }
+.payment-option-info span { font-size: 0.78rem; color: var(--ink-soft); }
+
+.checkout-summary-card { position: sticky; top: calc(var(--header-h) + 24px); }
+.co-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.co-item img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.co-item-info { flex: 1; }
+.co-item-name { font-size: 0.86rem; font-weight: 600; color: var(--ink); }
+.co-item-meta { font-size: 0.74rem; color: var(--ink-soft); }
+.co-item-price { font-size: 0.86rem; font-weight: 700; color: var(--espresso); white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .checkout-grid { grid-template-columns: 1fr; }
+  .checkout-summary-card { position: static; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ ORDER CONFIRMATION ============ */
+.confirm-screen { max-width: 560px; margin: 0 auto; text-align: center; padding: 40px 0; }
+.confirm-icon {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--olive);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+}
+.confirm-icon svg { width: 40px; height: 40px; color: var(--ivory); }
+.confirm-screen h2 { font-size: 1.9rem; margin-bottom: 10px; }
+.confirm-order-no { color: var(--ink-soft); margin-bottom: 32px; }
+.confirm-order-no strong { color: var(--brick); }
+.confirm-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 24px; text-align: left; margin-bottom: 24px; }
+.confirm-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+.confirm-row:last-child { border-bottom: none; }
+.confirm-row span:first-child { color: var(--ink-soft); }
+.confirm-row span:last-child { font-weight: 600; color: var(--ink); text-align: right; }
+.confirm-eta {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--ivory-dim);
+  border-radius: var(--radius-m);
+  padding: 18px 20px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+.confirm-eta svg { width: 28px; height: 28px; color: var(--brick); flex-shrink: 0; }
+.confirm-eta strong { display: block; color: var(--espresso); font-size: 0.95rem; }
+.confirm-eta span { font-size: 0.82rem; color: var(--ink-soft); }
+
+/* ============ OFFERS ============ */
+.offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.offer-card {
+  border-radius: var(--radius-l);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  color: var(--ivory);
+}
+.offer-card::before {
+  content: ''; position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 0.4s ease;
+}
+.offer-card:hover::before { transform: scale(1.06); }
+.offer-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(43,27,20,0.15) 0%, rgba(43,27,20,0.82) 100%);
+}
+.offer-card > * { position: relative; z-index: 1; }
+.offer-tag { display: inline-block; background: var(--gold); color: var(--espresso); font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; width: fit-content; }
+.offer-card h3 { color: var(--ivory); font-size: 1.35rem; margin-bottom: 6px; }
+.offer-card p { color: rgba(250,246,239,0.85); font-size: 0.88rem; }
+.offer1::before { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&q=80&auto=format&fit=crop'); }
+.offer2::before { background-image: url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80&auto=format&fit=crop'); }
+.offer3::before { background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80&auto=format&fit=crop'); }
+
+@media (max-width: 860px) {
+  .offers-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ BAKERY / RESTAURANT SPLIT SECTIONS ============ */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.split-section.reverse .split-visual { order: 2; }
+.split-visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.split-visual-grid img { border-radius: var(--radius-m); object-fit: cover; width: 100%; box-shadow: var(--shadow-sm); }
+.split-visual-grid img:nth-child(1) { aspect-ratio: 1/1.15; align-self: end; }
+.split-visual-grid img:nth-child(2) { aspect-ratio: 1/1; }
+.split-content ul { list-style: none; padding: 0; margin: 24px 0 32px; display: flex; flex-direction: column; gap: 12px; }
+.split-content li { display: flex; align-items: center; gap: 12px; font-size: 0.94rem; color: var(--ink-soft); }
+.split-content li svg { width: 18px; height: 18px; color: var(--olive); flex-shrink: 0; }
+@media (max-width: 900px) {
+  .split-section, .split-section.reverse { grid-template-columns: 1fr; gap: 32px; }
+  .split-section.reverse .split-visual { order: -1; }
+}
+
+/* ============ ABOUT ============ */
+.about-section { text-align: center; max-width: 720px; margin: 0 auto; }
+.about-section .section-tag { justify-content: center; display: flex; }
+.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; padding-top: 44px; border-top: 1px solid var(--line); }
+.about-stat strong { display: block; font-family: 'Fraunces', serif; font-size: 2.2rem; color: var(--brick); }
+.about-stat span { font-size: 0.84rem; color: var(--ink-soft); }
+@media (max-width: 700px) { .about-stats { grid-template-columns: repeat(2, 1fr); row-gap: 32px; } }
+
+/* ============ REVIEWS ============ */
+.reviews-scroll {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, 1fr);
+  gap: 22px; overflow-x: auto; padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.review-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 26px;
+  scroll-snap-align: start;
+}
+.review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.review-stars svg { width: 15px; height: 15px; fill: var(--gold); }
+.review-text { font-size: 0.92rem; color: var(--ink); line-height: 1.6; margin-bottom: 20px; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--espresso); color: var(--gold-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 700; flex-shrink: 0;
+}
+.review-author strong { font-size: 0.88rem; color: var(--espresso); display: block; }
+.review-author span { font-size: 0.76rem; color: var(--ink-soft); }
+
+/* ============ NEWSLETTER STRIP ============ */
+.newsletter-strip {
+  background: var(--espresso);
+  padding: 56px 0;
+  color: var(--ivory);
+}
+.newsletter-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.newsletter-text h3 { color: var(--ivory); font-size: 1.5rem; margin-bottom: 6px; }
+.newsletter-text p { color: rgba(250,246,239,0.7); font-size: 0.92rem; }
+.newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.newsletter-form input {
+  padding: 13px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(250,246,239,0.25);
+  background: rgba(250,246,239,0.08);
+  color: var(--ivory);
+  font-size: 0.92rem;
+  min-width: 260px;
+}
+.newsletter-form input::placeholder { color: rgba(250,246,239,0.5); }
+.newsletter-form input:focus { outline: none; border-color: var(--gold); }
+
+/* ============ FOOTER ============ */
+.site-footer { background: #201209; color: rgba(250,246,239,0.75); padding: 72px 0 28px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand .brand { color: var(--ivory); margin-bottom: 14px; }
+.footer-brand .brand-mark { background: var(--gold); color: var(--espresso); }
+.footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 300px; color: rgba(250,246,239,0.6); }
+.footer-social { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social a {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(250,246,239,0.08);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s ease;
+}
+.footer-social a:hover { background: var(--gold); color: var(--espresso); }
+.footer-social svg { width: 17px; height: 17px; }
+.footer-col h4 { color: var(--ivory); font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 18px; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.footer-col a { font-size: 0.88rem; color: rgba(250,246,239,0.65); transition: color 0.15s ease; }
+.footer-col a:hover { color: var(--gold-soft); }
+.footer-hours-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding-bottom: 4px; }
+.footer-hours-row span:last-child { color: rgba(250,246,239,0.9); font-weight: 500; }
+.footer-contact li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.86rem; }
+.footer-contact svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; color: var(--gold-soft); }
+.footer-bottom { border-top: 1px solid rgba(250,246,239,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 0.8rem; color: rgba(250,246,239,0.5); margin: 0; }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 0.8rem; color: rgba(250,246,239,0.5); }
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============ TOAST ============ */
+.toast-stack {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 800;
+  display: flex; flex-direction: column; gap: 10px;
+  align-items: center;
+  width: min(360px, 90vw);
+}
+.toast {
+  background: var(--espresso);
+  color: var(--ivory);
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; transform: translateY(12px);
+  animation: toast-in 0.3s ease forwards;
+}
+.toast.leaving { animation: toast-out 0.25s ease forwards; }
+.toast svg { width: 16px; height: 16px; color: var(--gold-soft); flex-shrink: 0; }
+@keyframes toast-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(-8px); } }
+
+/* ============ SCROLL REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ============ MISC UTILS ============ */
+.body-lock { overflow: hidden; }
+
+/* ============ RESPONSIVE HEADER NAV ============ */
+@media (max-width: 980px) {
+  .main-nav { display: none; }
+  .hamburger-btn { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .header-actions .btn { display: none; }
+  .brand span:not(.brand-mark) { font-size: 1.15rem; }
+  .brand small { display: none; }
+}
+
+@media (max-width: 560px) {
+  .section { padding: 60px 0; }
+  .hero { padding: 40px 0 60px; }
+  .offers-grid, .about-stats { gap: 16px; }
+}
+
+
+/* ============================================================
+   PREMIUM VISUAL REFINEMENT — additive CSS layer
+   Keeps all existing JS hooks/classes intact.
+============================================================ */
+:root {
+  --espresso-deep: #1A100B;
+  --paper: #F7F1E7;
+  --paper-2: #EEE5D6;
+  --cream: #FFFDFC;
+  --gold-deep: #A87D35;
+  --shadow-premium: 0 22px 60px rgba(43,27,20,.14);
+  --shadow-float: 0 30px 80px rgba(43,27,20,.18);
+  --ease-premium: cubic-bezier(.22,1,.36,1);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(201,161,90,.075), transparent 28rem),
+    radial-gradient(circle at 92% 38%, rgba(139,46,46,.045), transparent 32rem),
+    var(--ivory);
+}
+
+/* Header — quieter, more editorial */
+.site-header {
+  background: rgba(250,246,239,.86);
+  border-bottom-color: rgba(43,27,20,.10);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+.brand { letter-spacing: -.025em; }
+.brand-mark {
+  box-shadow: inset 0 0 0 1px rgba(228,207,160,.16), 0 8px 22px rgba(43,27,20,.14);
+}
+.main-nav a { transition: color .2s ease, background .2s ease, transform .2s ease; }
+.main-nav a:hover { transform: translateY(-1px); }
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 15px; right: 15px; bottom: 3px;
+  height: 1.5px;
+  background: var(--brick);
+  transform-origin: center;
+}
+
+/* Buttons — more intentional */
+.btn { box-shadow: 0 1px 0 rgba(255,255,255,.08) inset; }
+.btn-primary { box-shadow: 0 10px 24px rgba(139,46,46,.18); }
+.btn-primary:hover { box-shadow: 0 14px 30px rgba(139,46,46,.24); }
+.btn-secondary { border-color: rgba(43,27,20,.32); }
+
+/* Hero — the main visual moment */
+.hero {
+  padding: clamp(74px, 8vw, 122px) 0 clamp(104px, 10vw, 148px);
+  isolation: isolate;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  right: -180px; top: 70px;
+  border: 1px solid rgba(201,161,90,.24);
+  border-radius: 50%;
+  box-shadow: 0 0 0 34px rgba(201,161,90,.035), 0 0 0 70px rgba(201,161,90,.018);
+  pointer-events: none;
+}
+.hero::after {
+  content: 'KITCHEN PARADISE';
+  position: absolute;
+  left: -42px; bottom: 78px;
+  font-size: .62rem; font-weight: 700; letter-spacing: .32em;
+  color: rgba(43,27,20,.18);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.hero-inner { gap: clamp(44px, 6vw, 92px); }
+.hero-copy { position: relative; z-index: 2; }
+.hero-eyebrow {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .72rem;
+  margin-bottom: 22px;
+}
+.hero-eyebrow::before { width: 34px; height: 1px; }
+.hero h1 {
+  font-size: clamp(3rem, 6.1vw, 5.35rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+.hero h1 em { color: var(--brick); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 8px; }
+.hero-desc { font-size: 1.02rem; line-height: 1.8; max-width: 530px; }
+.hero-ctas { margin-bottom: 48px; }
+.hero-trust { gap: 18px 28px; }
+.trust-item { padding-right: 8px; }
+.hero-visual { z-index: 1; padding: 0 10px 24px 0; }
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 34px -2px 0 34px;
+  border: 1px solid var(--gold-soft);
+  border-radius: calc(var(--radius-l) + 4px);
+  transform: rotate(2deg);
+  opacity: .72;
+  z-index: -1;
+}
+.hero-visual-frame {
+  border-radius: 28px;
+  box-shadow: var(--shadow-float);
+  aspect-ratio: 4/4.9;
+}
+.hero-visual-frame::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,.12), transparent 32%, rgba(43,27,20,.18));
+  pointer-events: none;
+}
+.hero-visual-frame img { transition: transform .8s var(--ease-premium), filter .5s ease; }
+.hero-visual:hover .hero-visual-frame img { transform: scale(1.035); filter: saturate(1.04); }
+.hero-badge {
+  bottom: -4px; left: -24px;
+  border: 1px solid rgba(43,27,20,.08);
+  box-shadow: 0 22px 50px rgba(43,27,20,.17);
+  padding: 16px 19px;
+}
+
+/* Section rhythm */
+.section { padding: clamp(96px, 10vw, 142px) 0; position: relative; }
+.section-alt {
+  background:
+    linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)),
+    var(--ivory-dim);
+  border-top: 1px solid rgba(43,27,20,.035);
+  border-bottom: 1px solid rgba(43,27,20,.035);
+}
+.section-head { margin-bottom: 54px; }
+.section-tag {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .7rem;
+}
+.section-head h2 { font-size: clamp(2.2rem, 4vw, 3.25rem); letter-spacing: -.035em; }
+.section-head p { line-height: 1.75; }
+
+/* Menu — editorial category rail + spacious grid */
+.menu-layout { grid-template-columns: 230px 1fr; gap: clamp(38px,5vw,68px); }
+.category-rail {
+  padding: 10px 0 10px 12px;
+  border-left: 1px solid var(--line-strong);
+}
+.category-rail button {
+  padding: 13px 15px;
+  border-left: 0;
+  border-radius: 8px;
+  letter-spacing: -.01em;
+}
+.category-rail button:hover { transform: translateX(3px); }
+.category-rail button.active {
+  background: var(--espresso);
+  color: var(--ivory);
+  border-left-color: transparent;
+  box-shadow: 0 8px 20px rgba(43,27,20,.12);
+}
+.category-rail button.active .cat-count { color: rgba(250,246,239,.64); }
+.mobile-cat-scroll { padding: 4px 0 10px; }
+.mobile-cat-scroll button { transition: transform .2s ease, background .2s ease, color .2s ease; }
+.mobile-cat-scroll button.active { box-shadow: 0 8px 18px rgba(43,27,20,.13); }
+
+/* Search field */
+.menu-layout + * { min-width: 0; }
+.search-box:has(#menuSearchInput) {
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.68) !important;
+  box-shadow: 0 12px 32px rgba(43,27,20,.06) !important;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.search-box:has(#menuSearchInput):focus-within {
+  border-color: var(--gold) !important;
+  box-shadow: 0 14px 34px rgba(43,27,20,.09) !important;
+}
+
+/* Product cards — substantial redesign without changing JS markup */
+.product-grid {
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 28px;
+}
+.product-card {
+  border: 1px solid rgba(43,27,20,.10);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(43,27,20,.055);
+  position: relative;
+  isolation: isolate;
+  transition: transform .35s var(--ease-premium), box-shadow .35s var(--ease-premium), border-color .25s ease;
+}
+.product-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.65);
+  pointer-events: none;
+  z-index: 4;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 52px rgba(43,27,20,.14);
+  border-color: rgba(139,46,46,.16);
+}
+.pc-image-wrap {
+  aspect-ratio: 1.15 / 1;
+  background: var(--paper-2);
+}
+.pc-image-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(26,16,11,.03), transparent 55%, rgba(26,16,11,.14));
+  pointer-events: none;
+}
+.pc-image-wrap img { transition: transform .65s var(--ease-premium), filter .4s ease; }
+.product-card:hover .pc-image-wrap img { transform: scale(1.075); filter: saturate(1.05); }
+.pc-veg-badge {
+  top: 14px; left: 14px;
+  box-shadow: 0 7px 18px rgba(43,27,20,.12);
+}
+.pc-rating {
+  top: 14px; right: 14px;
+  background: rgba(26,16,11,.84);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  padding: 6px 10px;
+  box-shadow: 0 7px 18px rgba(43,27,20,.16);
+}
+.pc-body { padding: 21px 21px 22px; }
+.pc-cat { letter-spacing: .14em; font-size: .65rem; margin-bottom: 8px; }
+.pc-name { font-size: 1.28rem; letter-spacing: -.025em; margin-bottom: 8px; }
+.pc-desc { font-size: .84rem; line-height: 1.65; margin-bottom: 22px; }
+.pc-footer { padding-top: 2px; }
+.pc-price { font-size: 1.32rem; }
+.pc-add-btn {
+  padding: 11px 17px;
+  box-shadow: 0 8px 18px rgba(43,27,20,.12);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.pc-add-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(139,46,46,.17); }
+
+/* Offers — editorial tiles */
+.offers-grid { grid-template-columns: 1.15fr .85fr .85fr; gap: 22px; }
+.offer-card {
+  min-height: 285px;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 14px 38px rgba(43,27,20,.10);
+  transition: transform .35s var(--ease-premium), box-shadow .35s var(--ease-premium);
+}
+.offer-card:hover { transform: translateY(-7px); box-shadow: 0 24px 52px rgba(43,27,20,.16); }
+.offer-card::after { background: linear-gradient(180deg, rgba(26,16,11,.04) 10%, rgba(26,16,11,.88) 100%); }
+.offer-tag { letter-spacing: .08em; text-transform: uppercase; font-size: .63rem; padding: 6px 11px; }
+.offer-card h3 { font-size: clamp(1.45rem,2.3vw,1.85rem); letter-spacing: -.025em; }
+.offer-card p { max-width: 330px; line-height: 1.6; }
+
+/* Restaurant / Bakery — stronger editorial composition */
+.split-section { gap: clamp(50px,7vw,100px); }
+.split-content { max-width: 570px; }
+.split-content h2 { font-size: clamp(2.25rem,4vw,3.3rem); line-height: 1.02; letter-spacing: -.04em; }
+.split-content > p { font-size: 1rem; line-height: 1.85; }
+.split-content ul { margin: 30px 0 36px; gap: 14px; }
+.split-content li { padding: 10px 0; border-bottom: 1px solid rgba(43,27,20,.08); }
+.split-content li:last-child { border-bottom: 0; }
+.split-visual { position: relative; }
+.split-visual::before {
+  content: '';
+  position: absolute; inset: 22px -18px -18px 22px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 20px;
+  z-index: -1;
+}
+.split-visual-grid { gap: 18px; }
+.split-visual-grid img {
+  border-radius: 18px;
+  box-shadow: 0 16px 38px rgba(43,27,20,.11);
+  transition: transform .5s var(--ease-premium), box-shadow .5s ease;
+}
+.split-visual-grid img:hover { transform: translateY(-5px) scale(1.012); box-shadow: 0 24px 50px rgba(43,27,20,.16); }
+
+/* About / story */
+.about-section { max-width: 820px; }
+.about-section h2 { font-size: clamp(2.45rem,4.5vw,3.5rem); letter-spacing: -.04em; }
+.about-section > p { line-height: 1.9; }
+.about-stats { gap: 0; margin-top: 62px; padding-top: 0; border-top: 0; }
+.about-stat { padding: 18px 20px; border-left: 1px solid var(--line); }
+.about-stat:first-child { border-left: 0; }
+.about-stat strong { font-size: 2.55rem; letter-spacing: -.04em; }
+.about-stat span { letter-spacing: .04em; text-transform: uppercase; font-size: .66rem; }
+
+/* Reviews */
+.reviews-scroll { grid-auto-columns: minmax(320px, 390px); gap: 24px; padding: 4px 4px 18px; }
+.review-card {
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(43,27,20,.055);
+  transition: transform .3s var(--ease-premium), box-shadow .3s ease;
+}
+.review-card:hover { transform: translateY(-5px); box-shadow: 0 20px 42px rgba(43,27,20,.11); }
+.review-text { font-family: 'Fraunces', Georgia, serif; font-size: 1.08rem; line-height: 1.65; }
+
+/* Newsletter */
+.newsletter-strip {
+  background:
+    radial-gradient(circle at 85% 50%, rgba(201,161,90,.18), transparent 25rem),
+    var(--espresso-deep);
+  padding: 70px 0;
+}
+.newsletter-text h3 { font-size: 1.8rem; }
+.newsletter-form input { min-width: 300px; }
+
+/* Footer */
+.site-footer { background: var(--espresso-deep); padding: 84px 0 30px; }
+.footer-grid { gap: 52px; margin-bottom: 60px; }
+.footer-brand p { line-height: 1.8; }
+.footer-col h4 { letter-spacing: .13em; font-size: .68rem; }
+.footer-bottom { padding-top: 28px; }
+
+/* Reveal polish */
+.reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s var(--ease-premium); }
+
+/* Mobile — preserve hierarchy instead of just stacking */
+@media (max-width: 900px) {
+  .hero { padding-top: 52px; }
+  .hero::after { display: none; }
+  .hero-visual { padding-right: 4px; }
+  .hero-visual::before { inset: 22px 0 0 22px; }
+  .hero h1 { font-size: clamp(2.8rem,9vw,4.3rem); }
+  .split-section, .split-section.reverse { gap: 54px; }
+  .split-visual::before { inset: 14px -8px -10px 14px; }
+  .offers-grid { grid-template-columns: 1fr 1fr; }
+  .offer-card:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .section { padding: 82px 0; }
+  .section-head { margin-bottom: 38px; }
+  .section-head h2 { font-size: 2.2rem; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+  .pc-body { padding: 17px; }
+  .pc-name { font-size: 1.08rem; }
+  .pc-desc { font-size: .78rem; }
+  .pc-footer { align-items: flex-end; }
+  .pc-add-btn { padding: 9px 12px; font-size: .76rem; }
+  .about-stats { grid-template-columns: repeat(2,1fr); }
+  .about-stat { border-left: 0; border-top: 1px solid var(--line); }
+  .about-stat:nth-child(-n+2) { border-top: 0; }
+  .offers-grid { grid-template-columns: 1fr; }
+  .offer-card:first-child { grid-column: auto; }
+  .offer-card { min-height: 250px; }
+  .newsletter-form, .newsletter-form input, .newsletter-form .btn { width: 100%; }
+}
+@media (max-width: 520px) {
+  .container { padding: 0 18px; }
+  .hero { padding: 34px 0 88px; }
+  .hero-inner { gap: 48px; }
+  .hero h1 { font-size: clamp(2.55rem,13vw,3.5rem); }
+  .hero-desc { font-size: .95rem; }
+  .hero-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .trust-item span { font-size: .75rem; }
+  .hero-badge { left: 8px; bottom: -16px; max-width: 220px; }
+  .product-grid { grid-template-columns: 1fr; gap: 18px; }
+  .pc-image-wrap { aspect-ratio: 1.25 / 1; }
+  .pc-body { padding: 19px; }
+  .pc-name { font-size: 1.2rem; }
+  .pc-desc { font-size: .82rem; }
+  .split-visual-grid { gap: 10px; }
+  .split-visual::before { display: none; }
+  .about-section > p { font-size: .94rem !important; }
+  .reviews-scroll { grid-auto-columns: minmax(285px, 88vw); }
+}
+
+</style>
+
+<style id="kitchen-paradise-mobile-pass">
+/* ==========================================================
+   KITCHEN PARADISE — Mobile Layout & Motion Pass
+   Keeps existing JS/markup intact.
+========================================================== */
+
+/* Give the menu content the full available width after the
+   category rail collapses on smaller screens. */
+@media (max-width: 860px) {
+  .menu-layout {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .menu-layout > div {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+/* Tablet: two comfortable cards, without squeezing the content. */
+@media (min-width: 521px) and (max-width: 860px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Phone: one full-width premium card. */
+@media (max-width: 520px) {
+  .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  .pc-image-wrap {
+    aspect-ratio: 1.38 / 1;
+  }
+
+  .pc-body {
+    padding: 21px 20px 22px;
+  }
+
+  .pc-name {
+    font-size: 1.24rem;
+    line-height: 1.2;
+  }
+
+  .pc-desc {
+    font-size: .86rem;
+    line-height: 1.62;
+    max-width: 42rem;
+  }
+
+  .pc-price {
+    font-size: 1.35rem;
+  }
+
+  .pc-add-btn {
+    padding: 11px 17px;
+    font-size: .82rem;
+  }
+
+  .results-meta {
+    margin-bottom: 16px;
+  }
+}
+
+/* Keep the mobile header elegant and stable while scrolling. */
+@media (max-width: 640px) {
+  .site-header {
+    height: 72px;
+  }
+
+  .header-inner {
+    gap: 8px;
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 1.18rem;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    font-size: .9rem;
+  }
+
+  .brand small {
+    font-size: .5rem;
+  }
+
+  .header-actions {
+    gap: 1px;
+  }
+
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Slightly more cinematic but still restrained motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .product-card {
+    will-change: transform;
+  }
+
+  .pc-add-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pc-add-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255,255,255,.13) 45%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    transition: transform .55s ease;
+    pointer-events: none;
+  }
+
+  .pc-add-btn:hover::after {
+    transform: translateX(120%);
+  }
+
+  .mobile-cat-scroll button {
+    transition:
+      transform .22s ease,
+      background .22s ease,
+      color .22s ease,
+      border-color .22s ease,
+      box-shadow .22s ease;
+  }
+
+  .mobile-cat-scroll button:active {
+    transform: scale(.97);
+  }
+}
+</style>
+
+
+<style id="kitchen-paradise-animation-pass">
+/* ==========================================================
+   KITCHEN PARADISE — Premium Motion Pass
+   Motion is restrained, fast and food-editorial rather than flashy.
+========================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --kp-ease: cubic-bezier(.22, 1, .36, 1);
+    --kp-fast: .22s;
+    --kp-med: .55s;
+  }
+
+  /* Hero entrance */
+  .hero-eyebrow,
+  .hero h1,
+  .hero-desc,
+  .hero-ctas,
+  .hero-trust {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: kp-rise .7s var(--kp-ease) forwards;
+  }
+
+  .hero-eyebrow { animation-delay: .08s; }
+  .hero h1 { animation-delay: .16s; }
+  .hero-desc { animation-delay: .24s; }
+  .hero-ctas { animation-delay: .32s; }
+  .hero-trust { animation-delay: .40s; }
+
+  .hero-visual {
+    animation: kp-hero-image .95s var(--kp-ease) both;
+  }
+
+  .hero-badge {
+    animation: kp-badge .8s var(--kp-ease) .38s both;
+  }
+
+  /* Existing reveal elements become smoother without changing JS. */
+  .reveal {
+    transition:
+      opacity .7s var(--kp-ease),
+      transform .7s var(--kp-ease);
+  }
+
+  /* Product cards: gentle lift, not a bounce. */
+  .product-card {
+    transition:
+      transform .38s var(--kp-ease),
+      box-shadow .38s var(--kp-ease),
+      border-color .25s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .pc-image-wrap {
+    overflow: hidden;
+  }
+
+  .pc-image-wrap img {
+    transition: transform .7s var(--kp-ease), filter .5s ease;
+  }
+
+  .product-card:hover .pc-image-wrap img {
+    transform: scale(1.055);
+  }
+
+  /* Buttons */
+  .btn,
+  .pc-add-btn,
+  .icon-btn,
+  .category-rail button {
+    transition:
+      transform .22s var(--kp-ease),
+      box-shadow .22s ease,
+      background .22s ease,
+      color .22s ease,
+      border-color .22s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active,
+  .pc-add-btn:active {
+    transform: translateY(0) scale(.98);
+  }
+
+  /* Navigation underline */
+  .main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 4px;
+    height: 1.5px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .3s var(--kp-ease);
+  }
+
+  .main-nav a:hover::after,
+  .main-nav a.active::after {
+    transform: scaleX(1);
+  }
+
+  /* Offers / editorial cards */
+  .offer-card {
+    transition:
+      transform .45s var(--kp-ease),
+      box-shadow .45s ease,
+      border-color .25s ease;
+  }
+
+  .offer-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .offer-card img {
+    transition: transform .8s var(--kp-ease);
+  }
+
+  .offer-card:hover img {
+    transform: scale(1.045);
+  }
+
+  /* Story imagery */
+  .about-image,
+  .story-image,
+  .restaurant-image,
+  .bakery-image {
+    overflow: hidden;
+  }
+
+  .about-image img,
+  .story-image img,
+  .restaurant-image img,
+  .bakery-image img {
+    transition: transform .8s var(--kp-ease);
+  }
+
+  .about-image:hover img,
+  .story-image:hover img,
+  .restaurant-image:hover img,
+  .bakery-image:hover img {
+    transform: scale(1.035);
+  }
+
+  /* Reviews */
+  .review-card {
+    transition:
+      transform .35s var(--kp-ease),
+      box-shadow .35s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Subtle modal/search polish */
+  .search-box,
+  .custom-modal {
+    transition:
+      transform .38s var(--kp-ease),
+      box-shadow .3s ease;
+  }
+
+  /* Floating brand mark */
+  .brand-mark {
+    transition: transform .35s var(--kp-ease), background .25s ease;
+  }
+
+  .brand:hover .brand-mark {
+    transform: rotate(-5deg) scale(1.04);
+  }
+}
+
+@keyframes kp-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kp-hero-image {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes kp-badge {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Prevent motion from causing horizontal overflow on small screens. */
+@media (max-width: 640px) {
+  .hero-visual,
+  .product-card,
+  .offer-card {
+    will-change: auto;
+  }
+}
+</style>
+
+<style id="kitchen-paradise-header-premium-pass">
+/* ==========================================================
+   KITCHEN PARADISE — Premium Header Refinement
+   Additive layer only. No JS hooks, IDs or existing classes
+   are removed — this purely restyles the existing structure
+   plus a few small, backwards-compatible markup additions
+   (brand-mark-txt, brand-word, header-divider, hamburger-lines).
+========================================================== */
+
+:root {
+  --header-h: 84px;
+  --header-h-scrolled: 72px;
+}
+
+/* ---------- Header shell ---------- */
+.site-header {
+  height: var(--header-h);
+  background: rgba(250, 246, 239, 0.90);
+  border-bottom: 1px solid rgba(43, 27, 20, 0.08);
+  box-shadow: none;
+  transition: height .38s var(--ease-premium, cubic-bezier(.22,1,.36,1)),
+              background .3s ease,
+              box-shadow .3s ease,
+              border-color .3s ease;
+}
+.site-header.is-scrolled {
+  height: var(--header-h-scrolled);
+  background: rgba(250, 246, 239, 0.97);
+  border-bottom-color: rgba(43, 27, 20, 0.10);
+  box-shadow: 0 1px 0 rgba(43,27,20,0.04), 0 10px 30px rgba(43,27,20,0.07);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 6px 4px 6px 0;
+}
+.brand-mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(155deg, var(--espresso) 0%, var(--espresso-deep, #1A100B) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(228,207,160,0.22),
+    inset 0 1px 1px rgba(255,255,255,0.06),
+    0 6px 16px rgba(43,27,20,0.22);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .45s var(--ease-premium, cubic-bezier(.22,1,.36,1)), box-shadow .3s ease;
+}
+.brand-mark::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,161,90,0.35);
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity .35s ease, transform .35s var(--ease-premium, cubic-bezier(.22,1,.36,1));
+}
+.brand:hover .brand-mark::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.brand:hover .brand-mark {
+  transform: rotate(-4deg) scale(1.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(228,207,160,0.32),
+    inset 0 1px 1px rgba(255,255,255,0.08),
+    0 8px 20px rgba(43,27,20,0.28);
+}
+.brand-mark-txt {
+  font-family: 'Fraunces', serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gold-soft);
+  line-height: 1;
+  transform: translateY(-0.5px);
+}
+.brand-word {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.12;
+  font-size: 1.36rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--espresso);
+}
+.brand-word small {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--gold-deep, #A87D35);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* ---------- Desktop nav ---------- */
+.main-nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 999px;
+}
+.main-nav a {
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  border-radius: 999px;
+}
+.main-nav a:hover {
+  color: var(--espresso);
+  background: rgba(43,27,20,0.045);
+}
+.main-nav a.active {
+  color: var(--espresso);
+  font-weight: 600;
+}
+.main-nav a::after {
+  left: 18px;
+  right: 18px;
+  bottom: 6px;
+  height: 1.5px;
+  background: var(--gold-deep, var(--brick));
+}
+.main-nav a.active::after { background: var(--brick); }
+
+/* ---------- Actions cluster ---------- */
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--espresso-soft, var(--espresso));
+  transition: background .2s ease, color .2s ease, transform .2s var(--ease-premium, cubic-bezier(.22,1,.36,1));
+}
+.icon-btn svg { width: 19px; height: 19px; }
+.icon-btn:hover {
+  background: rgba(43,27,20,0.055);
+  color: var(--espresso);
+  transform: translateY(-1px);
+}
+.icon-btn:active { transform: translateY(0) scale(0.94); }
+
+.cart-count {
+  top: 1px; right: 1px;
+  min-width: 16px; height: 16px;
+  font-size: 0.6rem;
+  border: 2px solid rgba(250,246,239,0.98);
+  box-shadow: 0 2px 6px rgba(139,46,46,0.35);
+  transition: transform .28s var(--ease-premium, cubic-bezier(.22,1,.36,1)), background .2s ease;
+}
+.cart-count.bump { animation: kp-cart-bump .42s var(--ease-premium, cubic-bezier(.22,1,.36,1)); }
+@keyframes kp-cart-bump {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.32); }
+  100% { transform: scale(1); }
+}
+
+.header-divider {
+  display: inline-block;
+  width: 1px;
+  height: 22px;
+  background: rgba(43,27,20,0.12);
+  margin: 0 8px;
+}
+
+.header-cta {
+  margin-left: 2px;
+  padding: 11px 22px;
+  font-size: 0.84rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 20px rgba(139,46,46,0.20);
+}
+.header-cta:hover {
+  box-shadow: 0 12px 26px rgba(139,46,46,0.28);
+}
+
+/* ---------- Hamburger ---------- */
+.hamburger-btn { position: relative; }
+.hamburger-lines {
+  position: relative;
+  width: 19px; height: 13px;
+  display: block;
+}
+.hamburger-lines span {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1.6px;
+  border-radius: 2px;
+  background: var(--espresso);
+  transition: transform .32s var(--ease-premium, cubic-bezier(.22,1,.36,1)), opacity .2s ease, top .32s var(--ease-premium, cubic-bezier(.22,1,.36,1));
+}
+.hamburger-lines span:nth-child(1) { top: 0; }
+.hamburger-lines span:nth-child(2) { top: 5.5px; }
+.hamburger-lines span:nth-child(3) { top: 11px; }
+.hamburger-btn.is-active .hamburger-lines span:nth-child(1) {
+  top: 5.5px; transform: rotate(45deg);
+}
+.hamburger-btn.is-active .hamburger-lines span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.is-active .hamburger-lines span:nth-child(3) {
+  top: 5.5px; transform: rotate(-45deg);
+}
+
+/* ---------- Mobile drawer refinement ---------- */
+.mobile-drawer-panel {
+  width: min(340px, 86vw);
+  padding: 20px 22px 24px;
+}
+.mobile-drawer-header {
+  padding-bottom: 18px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-drawer-header .brand { gap: 10px; padding: 0; }
+.mobile-drawer-header .brand-word { font-size: 1.08rem; }
+.mobile-drawer-header .brand-word small { display: block; }
+.mobile-drawer nav { gap: 0; }
+.mobile-drawer nav a {
+  padding: 15px 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Fraunces', serif;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid rgba(43,27,20,0.08);
+  transition: color .2s ease, padding-left .25s var(--ease-premium, cubic-bezier(.22,1,.36,1));
+}
+.mobile-drawer nav a:hover,
+.mobile-drawer nav a:active {
+  color: var(--brick);
+  padding-left: 12px;
+}
+.mobile-drawer nav a:last-child { border-bottom: none; }
+.mobile-drawer-cta { padding-top: 22px; }
+.mobile-drawer-cta .btn { padding: 15px 26px; font-size: 0.95rem; }
+#mobileDrawerCloseBtn { width: 38px; height: 38px; }
+#mobileDrawerCloseBtn svg { width: 17px; height: 17px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-drawer-panel {
+    transition: transform .42s var(--ease-premium, cubic-bezier(.22,1,.36,1));
+  }
+  .mobile-drawer-backdrop {
+    transition: opacity .32s ease;
+    backdrop-filter: blur(2px);
+  }
+  .mobile-drawer nav a {
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity .35s ease, transform .35s var(--ease-premium, cubic-bezier(.22,1,.36,1)), color .2s ease, padding-left .25s ease;
+  }
+  .mobile-drawer.open nav a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .mobile-drawer.open nav a:nth-child(1) { transition-delay: .06s; }
+  .mobile-drawer.open nav a:nth-child(2) { transition-delay: .10s; }
+  .mobile-drawer.open nav a:nth-child(3) { transition-delay: .14s; }
+  .mobile-drawer.open nav a:nth-child(4) { transition-delay: .18s; }
+  .mobile-drawer.open nav a:nth-child(5) { transition-delay: .22s; }
+  .mobile-drawer.open nav a:nth-child(6) { transition-delay: .26s; }
+}
+
+/* ---------- Tablet / desktop nav breakpoint ---------- */
+@media (max-width: 980px) {
+  .header-inner { grid-template-columns: auto auto; justify-content: space-between; }
+  .main-nav { display: none; }
+}
+
+@media (min-width: 981px) and (max-width: 1120px) {
+  .main-nav a { padding: 10px 13px; font-size: 0.85rem; }
+  .header-inner { gap: 18px; }
+}
+
+/* ---------- Mobile header ---------- */
+@media (max-width: 640px) {
+  :root { --header-h: 68px; --header-h-scrolled: 62px; }
+
+  .header-inner { gap: 10px; }
+
+  .brand { gap: 9px; padding: 0; }
+  .brand-mark { width: 36px; height: 36px; }
+  .brand-mark-txt { font-size: 0.88rem; }
+  .brand-word { font-size: 1.06rem; }
+  .brand-word small { display: none; }
+
+  .header-actions { gap: 6px; }
+  .icon-btn { width: 38px; height: 38px; }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  .header-divider { display: none; }
+  .header-cta { display: none; }
+
+  .hamburger-btn { width: 38px; height: 38px; margin-left: 0; }
+}
+
+@media (max-width: 360px) {
+  .brand-word { font-size: 0.98rem; }
+  .header-actions { gap: 2px; }
+  .icon-btn { width: 36px; height: 36px; }
+}
+</style>
+
+
+<style id="kp-final-polish">
+/* ==========================================================
+   KITCHEN PARADISE — FINAL PREMIUM POLISH
+   Visual-only pass. Existing IDs, classes and JS behavior kept.
+========================================================== */
+:root{
+  --kp-header-glass:rgba(250,246,239,.88);
+  --kp-border:rgba(43,27,20,.11);
+  --kp-shadow:0 18px 50px rgba(43,27,20,.10);
+  --kp-shadow-hover:0 28px 70px rgba(43,27,20,.15);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--ivory,#FAF6EF);}
+
+/* Header: cleaner, more premium and slightly more compact on phones */
+.site-header{
+  backdrop-filter:blur(16px) saturate(115%);
+  -webkit-backdrop-filter:blur(16px) saturate(115%);
+  background:var(--kp-header-glass);
+  border-bottom:1px solid var(--kp-border);
+  box-shadow:0 8px 28px rgba(43,27,20,.035);
+}
+.site-header.is-scrolled{
+  background:rgba(250,246,239,.96);
+  box-shadow:0 10px 34px rgba(43,27,20,.09);
+}
+.brand{transition:transform .35s cubic-bezier(.22,1,.36,1);}
+.brand:hover{transform:translateY(-1px);}
+.header-actions{gap:6px;}
+.icon-btn{position:relative;}
+.icon-btn:hover{background:rgba(139,46,46,.07);}
+.header-cta{border-radius:999px;}
+
+/* Hero: stronger depth without clutter */
+.hero{overflow:hidden;position:relative;}
+.hero::before{
+  content:"";position:absolute;inset:auto -12% -20% 35%;height:55%;
+  background:radial-gradient(circle,rgba(201,161,90,.12),transparent 68%);
+  pointer-events:none;
+}
+.hero-copy{position:relative;z-index:2;}
+.hero h1{letter-spacing:-.045em;text-wrap:balance;}
+.hero-desc{max-width:620px;}
+.hero-ctas .btn{transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .3s ease;}
+.hero-ctas .btn:hover{transform:translateY(-3px);}
+.hero-visual{filter:drop-shadow(0 24px 38px rgba(43,27,20,.10));}
+.hero-visual-frame{box-shadow:var(--kp-shadow);}
+.hero-visual-frame img{transition:transform .9s cubic-bezier(.22,1,.36,1),filter .6s ease;}
+.hero-visual:hover .hero-visual-frame img{transform:scale(1.045);filter:saturate(1.05) contrast(1.02);}
+
+/* Section rhythm */
+.section{position:relative;}
+.section-head h2,.about-section h2{letter-spacing:-.035em;text-wrap:balance;}
+.section-tag{letter-spacing:.18em;}
+
+/* Category rail */
+.category-rail{gap:5px;}
+.category-rail button{
+  transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.category-rail button:hover{transform:translateX(5px);}
+.category-rail button.active{box-shadow:inset 3px 0 0 var(--brick);}
+
+/* Product cards — final premium treatment */
+.product-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(43,27,20,.10);
+  box-shadow:0 10px 30px rgba(43,27,20,.055);
+  transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,border-color .3s ease;
+}
+.product-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.38);
+}
+.product-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--kp-shadow-hover);
+  border-color:rgba(139,46,46,.18);
+}
+.pc-image-wrap{overflow:hidden;}
+.pc-image-wrap img{
+  transition:transform .75s cubic-bezier(.22,1,.36,1),filter .45s ease;
+}
+.product-card:hover .pc-image-wrap img{transform:scale(1.065);filter:saturate(1.045);}
+.pc-rating{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.pc-body{position:relative;}
+.pc-cat{letter-spacing:.15em;}
+.pc-name{letter-spacing:-.025em;text-wrap:balance;}
+.pc-desc{max-width:34rem;}
+.pc-footer{align-items:end;gap:16px;}
+.pc-add-btn{
+  min-width:132px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .25s ease;
+}
+.pc-add-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(43,27,20,.18);}
+
+/* Offers */
+.offer-card{overflow:hidden;box-shadow:0 12px 32px rgba(43,27,20,.07);}
+.offer-card::after{transition:opacity .45s ease;}
+.offer-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(43,27,20,.13);}
+
+/* Story sections */
+.split-section{position:relative;}
+.split-copy h2{text-wrap:balance;letter-spacing:-.04em;}
+.split-visual-grid img{box-shadow:0 16px 40px rgba(43,27,20,.10);transition:transform .7s cubic-bezier(.22,1,.36,1),box-shadow .4s ease;}
+.split-visual-grid img:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(43,27,20,.14);}
+
+/* About / stats */
+.about-section{position:relative;}
+.about-stats{gap:12px;}
+.about-stat{transition:transform .3s ease,background .3s ease,box-shadow .3s ease;}
+.about-stat:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(43,27,20,.07);}
+
+/* Reviews */
+.reviews-scroll{scroll-snap-type:x mandatory;scroll-padding-inline:4px;}
+.review-card{scroll-snap-align:start;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .3s ease;}
+.review-card:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(43,27,20,.10);border-color:rgba(139,46,46,.16);}
+
+/* Buttons */
+.btn{transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .25s ease,color .25s ease,border-color .25s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0) scale(.98);}
+
+/* Search / drawer depth */
+.search-overlay,.mobile-drawer-backdrop{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);}
+.mobile-drawer-panel{box-shadow:-24px 0 70px rgba(43,27,20,.16);}
+
+/* Accessible focus */
+:focus-visible{outline:2px solid var(--brick);outline-offset:3px;}
+
+@media (max-width:640px){
+  .site-header{height:74px;}
+  .header-inner{gap:6px;}
+  .brand{gap:9px;}
+  .brand-mark{width:40px;height:40px;}
+  .brand-word{font-size:1.16rem;}
+  .brand-word small{font-size:.49rem;letter-spacing:.13em;}
+  .header-actions{gap:1px;}
+  .icon-btn{width:41px;height:41px;}
+  .hero h1{font-size:clamp(2.7rem,11vw,4.3rem);line-height:.98;}
+  .hero-desc{font-size:.96rem;line-height:1.65;}
+  .hero-ctas{gap:10px;}
+  .hero-ctas .btn{min-height:50px;}
+  .product-card{border-radius:24px;}
+  .pc-image-wrap{aspect-ratio:1.42/1;}
+  .pc-body{padding:22px 20px 23px;}
+  .pc-name{font-size:1.28rem;line-height:1.16;}
+  .pc-desc{font-size:.9rem;line-height:1.58;}
+  .pc-footer{margin-top:24px;}
+  .pc-add-btn{min-width:128px;}
+  .reviews-scroll{gap:16px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+</style>
+
+<style id="kp-hover-zoom-tuning">
+/* ==========================================================
+   KITCHEN PARADISE — Hover & Zoom Intensity Tuning
+   Consolidated, subtler final values. Wins the cascade by
+   source order alone (same specificity as earlier passes) —
+   nothing above is deleted or altered.
+========================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  .product-card:hover { transform: translateY(-4px); }
+  .product-card:hover .pc-image-wrap img { transform: scale(1.03); }
+
+  .offer-card:hover { transform: translateY(-4px); }
+  .offer-card:hover img,
+  .offer-card:hover::before { transform: scale(1.025); }
+
+  .review-card:hover { transform: translateY(-3px); }
+
+  .about-stat:hover { transform: translateY(-2px); }
+
+  .hero-visual:hover .hero-visual-frame img { transform: scale(1.02); }
+
+  .split-visual-grid img:hover { transform: translateY(-3px) scale(1.015); }
+
+  .about-image:hover img,
+  .story-image:hover img,
+  .restaurant-image:hover img,
+  .bakery-image:hover img { transform: scale(1.015); }
+
+  .btn:hover { transform: translateY(-1px); }
+  .pc-add-btn:hover { transform: translateY(-1px); }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark"><span class="brand-mark-txt">KP</span></span>
+      <span class="brand-word">Kitchen Paradise<small>CAFE &amp; BAKERY</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#home" class="active">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#restaurant">Restaurant</a>
+      <a href="#bakery">Bakery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchIconBtn" aria-label="Search menu">
+        <!-- search icon injected via JS-safe inline svg -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" id="cartIconBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none;">0</span>
+      </button>
+      <span class="header-divider" aria-hidden="true"></span>
+      <a href="#menu" class="btn btn-primary btn-sm header-cta">Order Online</a>
+      <button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <input type="text" id="searchInput" placeholder="Search for pizza, croissants, cakes..." aria-label="Search menu">
+      <button class="icon-btn" id="searchCloseBtn" aria-label="Close search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-backdrop" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer-panel">
+    <div class="mobile-drawer-header">
+      <span class="brand"><span class="brand-mark"><span class="brand-mark-txt">KP</span></span> <span class="brand-word">Kitchen Paradise<small>CAFE &amp; BAKERY</small></span></span>
+      <button class="icon-btn" id="mobileDrawerCloseBtn" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#restaurant">Restaurant</a>
+      <a href="#bakery">Bakery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-drawer-cta">
+      <a href="#menu" class="btn btn-primary btn-block">Order Online</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">Est. 2014 · Wood-Fired &amp; Oven-Fresh</span>
+        <h1>Crafted With Passion.<br>Served With <em>Perfection.</em></h1>
+        <p class="hero-desc">From our wood-fired oven to your table — hand-stretched pizzas, slow-braised pastas, and pastries laminated fresh every morning. One kitchen, two crafts, zero compromises.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" id="exploreMenuBtn">Explore Menu</button>
+          <button class="btn btn-secondary" id="orderNowBtn">Order Now</button>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13V6a2 2 0 0 1 2-2h4a7 7 0 0 1 7 7v1a7 7 0 0 1-6 6.92"/><path d="M4 13c0-4 3-6 8-6"/></svg>
+            <span>Fresh, seasonal ingredients</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>45-min average delivery</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <span>4.8 average rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-frame">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80&auto=format&fit=crop" alt="Wood-fired pizza fresh from the oven at Kitchen Paradise" width="700" height="800" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80&auto=format&fit=crop';">
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">🔥</div>
+          <div>
+            <strong>Baking Right Now</strong>
+            <span>142 orders fulfilled today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU SYSTEM ============ -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Full Menu</span>
+          <h2>Everything, freshly made</h2>
+          <p>Browse our complete menu across the restaurant and bakery — filter by category or search for something specific.</p>
+        </div>
+        <div style="width:280px;max-width:100%;">
+          <div class="search-box" style="box-shadow:var(--shadow-sm);border:1px solid var(--line);">
+            <div style="display:flex;align-items:center;gap:8px;padding:2px 4px;">
+              <span style="padding-left:10px;color:var(--ink-soft);display:flex;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="menuSearchInput" placeholder="Search this menu..." style="padding:12px 8px;font-size:0.9rem;" aria-label="Search this menu">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-cat-scroll" id="mobileCatScroll"></div>
+
+      <div class="menu-layout">
+        <nav class="category-rail" id="categoryRail" aria-label="Menu categories"></nav>
+        <div>
+          <p class="results-meta" id="resultsMeta"></p>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPECIAL OFFERS ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">This Week</span>
+          <h2>Special offers</h2>
+        </div>
+      </div>
+      <div class="offers-grid">
+        <div class="offer-card offer1 reveal" data-offer-scroll="bakery" role="button" tabindex="0">
+          <span class="offer-tag">Bakery</span>
+          <h3>Fresh From The Oven</h3>
+          <p>Sourdough, croissants and rolls baked in small batches every morning.</p>
+        </div>
+        <div class="offer-card offer2 reveal" data-offer-scroll="none" role="button" tabindex="0">
+          <span class="offer-tag">Promo Code</span>
+          <h3>10% Off With AMBER10</h3>
+          <p>Apply code <strong style="color:var(--gold-soft);">AMBER10</strong> at checkout for 10% off your order.</p>
+        </div>
+        <div class="offer-card offer3 reveal" data-offer-scroll="cakes" role="button" tabindex="0">
+          <span class="offer-tag">Weekend Only</span>
+          <h3>Weekend Dessert Collection</h3>
+          <p>Celebration cakes and layered desserts, made to order for the weekend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESTAURANT SECTION ============ -->
+  <section class="section" id="restaurant">
+    <div class="container">
+      <div class="split-section">
+        <div class="split-content reveal">
+          <span class="section-tag">The Restaurant</span>
+          <h2 style="margin-bottom:18px;">A kitchen built around fire and patience</h2>
+          <p style="color:var(--ink-soft);">Our restaurant menu runs on two things: a 450°C wood-fired oven and sauces that simmer for hours before they touch a plate. From hand-stretched pizza dough to pasta finished table-side in flavor, if not in ceremony — every dish is built to order, never reheated.</p>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Wood-fired pizzas, stretched by hand daily
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Slow-braised pasta sauces, simmered for hours
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Chargrilled burgers on brioche, made to order
+            </li>
+          </ul>
+          <a href="#menu" class="btn btn-primary" data-offer-scroll="restaurant">Explore Restaurant Menu</a>
+        </div>
+        <div class="split-visual reveal">
+          <div class="split-visual-grid">
+            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&q=80&auto=format&fit=crop" alt="Wood-fired oven cooking pizza" width="400" height="460" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80&auto=format&fit=crop';">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&q=80&auto=format&fit=crop" alt="Plated pasta dish" width="400" height="400" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=500&q=80&auto=format&fit=crop';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BAKERY SECTION ============ -->
+  <section class="section section-alt" id="bakery">
+    <div class="container">
+      <div class="split-section reverse">
+        <div class="split-content reveal">
+          <span class="section-tag">The Bakery</span>
+          <h2 style="margin-bottom:18px;">Laminated, proofed, and baked before sunrise</h2>
+          <p style="color:var(--ink-soft);">Our bakers start at 4am so the first croissant comes out golden by opening time. Butter-laminated pastries, naturally leavened sourdough, and celebration cakes built layer by layer — nothing here is mass-produced, and nothing sits under a heat lamp.</p>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              36-hour laminated croissants and pastries
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Naturally leavened sourdough, 48-hour ferment
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom celebration cakes with cake customizer
+            </li>
+          </ul>
+          <a href="#menu" class="btn btn-primary" data-offer-scroll="bakery">Explore Bakery Menu</a>
+        </div>
+        <div class="split-visual reveal">
+          <div class="split-visual-grid">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80&auto=format&fit=crop" alt="Fresh baked bread loaves" width="400" height="460" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=60&auto=format&fit=crop';">
+            <img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?w=500&q=80&auto=format&fit=crop" alt="Assorted fresh pastries" width="400" height="400" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80&auto=format&fit=crop';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-section reveal">
+        <span class="section-tag">Our Story</span>
+        <h2 style="margin-bottom:20px;">Two crafts, one kitchen</h2>
+        <p style="color:var(--ink-soft);font-size:1.05rem;">Kitchen Paradise started in 2014 as a single wood-fired oven and a question: why should a bakery and a restaurant be separate businesses when they share the same values? Fresh ingredients, sourced daily. Chefs and bakers who trained under people who cared. No shortcuts, no reheated plates, no pastry that sat overnight. What began as a single storefront has grown into a full kitchen serving both crafts — but the standard hasn't moved an inch.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>10+</strong><span>Years of Craft</span></div>
+          <div class="about-stat"><strong>30+</strong><span>Menu Items</span></div>
+          <div class="about-stat"><strong>50k+</strong><span>Orders Delivered</span></div>
+          <div class="about-stat"><strong>4.8★</strong><span>Average Rating</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Testimonials</span>
+          <h2>What our customers say</h2>
+        </div>
+      </div>
+      <div class="reviews-scroll" id="reviewsScroll"></div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter-strip" id="contact">
+    <div class="container newsletter-inner">
+      <div class="newsletter-text">
+        <h3>Get first access to new menus</h3>
+        <p>Seasonal specials, bakery drops, and offers — straight to your inbox.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address">
+        <button type="submit" class="btn btn-gold">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-mark">KP</span> Kitchen Paradise</span>
+        <p>An artisan restaurant and bakery crafting wood-fired food and oven-fresh pastries daily, since 2014. One kitchen, two crafts, zero compromises.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Full Menu</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="#menu" data-offer-scroll="pizza">Pizza</a></li>
+          <li><a href="#menu" data-offer-scroll="burgers">Burgers</a></li>
+          <li><a href="#menu" data-offer-scroll="cakes">Cakes</a></li>
+          <li><a href="#menu" data-offer-scroll="pastries">Pastries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>VISIT US</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>24 Cathedral Road, Bandra West, Mumbai 400050</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 98765 43210</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6z"/><polyline points="22 6 12 13 2 6"/></svg>
+            <span>hello@amberandrye.com</span>
+          </li>
+        </ul>
+        <div style="margin-top:16px;">
+          <div class="footer-hours-row"><span>Mon – Fri</span><span>8am – 11pm</span></div>
+          <div class="footer-hours-row"><span>Sat – Sun</span><span>8am – 12am</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kitchen Paradise. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="icon-btn" id="cartCloseBtn" aria-label="Close cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-summary" id="cartSummary"></div>
+</aside>
+
+<!-- ============ CUSTOMIZATION MODAL ============ -->
+<div class="modal-overlay" id="customizeOverlay">
+  <div class="custom-modal" id="customModal" role="dialog" aria-modal="true" aria-label="Customize item"></div>
+</div>
+
+<!-- ============ CHECKOUT OVERLAY ============ -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-topbar">
+    <div class="container">
+      <button class="checkout-back" id="checkoutCloseBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Cart
+      </button>
+    </div>
+  </div>
+  <div class="checkout-body" id="checkoutBody"></div>
+</div>
+
+<!-- ============ ORDER CONFIRMATION OVERLAY ============ -->
+<div class="checkout-overlay" id="confirmOverlay" aria-hidden="true">
+  <div class="checkout-body" id="confirmBody" style="padding-top:64px;"></div>
+</div>
+
+<!-- ============ TOAST STACK ============ -->
+<div class="toast-stack" id="toastStack"></div>
+
+<script>
+// ===== PRODUCT DATA =====
+const PRODUCTS = [
+  // ---- PIZZA ----
+  { id: 'p01', name: 'Margherita Wood-Fired', desc: 'San Marzano tomato, fior di latte, torn basil, olive oil', price: 349, category: 'pizza', tags: ['restaurant'], veg: true, rating: 4.7, reviews: 212, img: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pizza' },
+  { id: 'p02', name: 'Smoked Pepperoni Supreme', desc: 'Double pepperoni, mozzarella, chili oil drizzle', price: 429, category: 'pizza', tags: ['restaurant'], veg: false, rating: 4.8, reviews: 301, img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pizza' },
+  { id: 'p03', name: 'Roasted Vegetable Garden', desc: 'Zucchini, bell peppers, red onion, goat cheese, basil pesto', price: 379, category: 'pizza', tags: ['restaurant'], veg: true, rating: 4.6, reviews: 156, img: 'https://images.unsplash.com/photo-1511689660979-10d2b1aada49?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pizza' },
+  { id: 'p04', name: 'Truffle Mushroom White Pie', desc: 'Wild mushrooms, truffle oil, ricotta, thyme, no red sauce', price: 459, category: 'pizza', tags: ['restaurant'], veg: true, rating: 4.9, reviews: 98, img: 'https://images.unsplash.com/photo-1600628421066-f6bda6a7b976?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pizza' },
+
+  // ---- BURGERS ----
+  { id: 'b01', name: 'Charred Angus Classic', desc: 'Grilled angus patty, aged cheddar, house sauce, brioche bun', price: 289, category: 'burgers', tags: ['restaurant'], veg: false, rating: 4.7, reviews: 267, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'burger' },
+  { id: 'b02', name: 'Smoked Paneer Tikka Burger', desc: 'Char-grilled paneer, mint chutney, pickled onion, toasted bun', price: 249, category: 'burgers', tags: ['restaurant'], veg: true, rating: 4.6, reviews: 189, img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'burger' },
+  { id: 'b03', name: 'Double Smash Cheese Stack', desc: 'Two smashed patties, double cheese, caramelized onions', price: 339, category: 'burgers', tags: ['restaurant'], veg: false, rating: 4.8, reviews: 224, img: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'burger' },
+  { id: 'b04', name: 'Crispy Chicken Zinger', desc: 'Buttermilk-fried chicken thigh, slaw, spiced mayo', price: 279, category: 'burgers', tags: ['restaurant'], veg: false, rating: 4.5, reviews: 178, img: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'burger' },
+
+  // ---- PASTA ----
+  { id: 'pa01', name: 'Truffle Mushroom Tagliatelle', desc: 'Fresh tagliatelle, wild mushroom ragout, parmesan, truffle oil', price: 399, category: 'pasta', tags: ['restaurant'], veg: true, rating: 4.8, reviews: 134, img: 'https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pasta' },
+  { id: 'pa02', name: 'Slow-Braised Bolognese', desc: 'House-made pappardelle, 6-hour beef ragu, aged parmesan', price: 419, category: 'pasta', tags: ['restaurant'], veg: false, rating: 4.9, reviews: 201, img: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pasta' },
+  { id: 'pa03', name: 'Classic Basil Pesto Penne', desc: 'Basil pesto, pine nuts, sundried tomato, parmesan shavings', price: 329, category: 'pasta', tags: ['restaurant'], veg: true, rating: 4.6, reviews: 112, img: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pasta' },
+  { id: 'pa04', name: 'Prawn Aglio e Olio', desc: 'Garlic, chili flakes, olive oil, fresh parsley, tiger prawns', price: 449, category: 'pasta', tags: ['restaurant'], veg: false, rating: 4.7, reviews: 87, img: 'https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'pasta' },
+
+  // ---- STARTERS ----
+  { id: 's01', name: 'Crispy Corn & Cheese Croquettes', desc: 'Golden fried corn croquettes, chipotle mayo dip', price: 219, category: 'starters', tags: ['restaurant'], veg: true, rating: 4.5, reviews: 145, img: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 's02', name: 'Peri-Peri Grilled Wings', desc: 'Charcoal-grilled chicken wings tossed in peri-peri spice', price: 269, category: 'starters', tags: ['restaurant'], veg: false, rating: 4.7, reviews: 198, img: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 's03', name: 'Burrata & Heirloom Tomato', desc: 'Creamy burrata, heirloom tomatoes, aged balsamic, basil oil', price: 349, category: 'starters', tags: ['restaurant'], veg: true, rating: 4.8, reviews: 76, img: 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 's04', name: 'Smoked Chicken Satay Skewers', desc: 'Charred chicken skewers, peanut sauce, pickled cucumber', price: 289, category: 'starters', tags: ['restaurant'], veg: false, rating: 4.6, reviews: 92, img: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&q=80&auto=format&fit=crop', customizable: false },
+
+  // ---- CAKES ----
+  { id: 'c01', name: 'Belgian Dark Chocolate Truffle', desc: 'Rich cocoa sponge, ganache layers, chocolate shavings', price: 899, category: 'cakes', tags: ['bakery'], veg: true, rating: 4.9, reviews: 342, img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'cake' },
+  { id: 'c02', name: 'Red Velvet Cream Cheese', desc: 'Velvety cocoa layers, tangy cream cheese frosting', price: 849, category: 'cakes', tags: ['bakery'], veg: true, rating: 4.8, reviews: 289, img: 'https://images.unsplash.com/photo-1586985289906-406988974504?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'cake' },
+  { id: 'c03', name: 'Fresh Strawberry Vanilla Bean', desc: 'Vanilla bean sponge, fresh cream, seasonal strawberries', price: 799, category: 'cakes', tags: ['bakery'], veg: true, rating: 4.7, reviews: 176, img: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'cake' },
+  { id: 'c04', name: 'Salted Caramel Pecan', desc: 'Caramel-soaked sponge, toasted pecans, salted caramel drip', price: 949, category: 'cakes', tags: ['bakery'], veg: true, rating: 4.9, reviews: 154, img: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'cake' },
+
+  // ---- PASTRIES ----
+  { id: 'pt01', name: 'Butter Croissant', desc: 'Laminated 36 hours, golden and flaky, French butter', price: 129, category: 'pastries', tags: ['bakery'], veg: true, rating: 4.8, reviews: 267, img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'pt02', name: 'Pain au Chocolat', desc: 'Buttery laminated pastry, dark chocolate batons', price: 149, category: 'pastries', tags: ['bakery'], veg: true, rating: 4.9, reviews: 198, img: 'https://images.unsplash.com/photo-1623334044303-241021148842?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'pt03', name: 'Almond Croissant', desc: 'Twice-baked, almond cream filling, toasted flaked almonds', price: 169, category: 'pastries', tags: ['bakery'], veg: true, rating: 4.7, reviews: 143, img: 'https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'pt04', name: 'Classic Cinnamon Roll', desc: 'Soft brioche swirl, cinnamon sugar, cream cheese glaze', price: 159, category: 'pastries', tags: ['bakery'], veg: true, rating: 4.8, reviews: 221, img: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&q=80&auto=format&fit=crop', customizable: false },
+
+  // ---- DESSERTS ----
+  { id: 'd01', name: 'Classic Belgian Waffle', desc: 'Crisp waffle, maple syrup, whipped cream, seasonal berries', price: 259, category: 'desserts', tags: ['bakery', 'restaurant'], veg: true, rating: 4.7, reviews: 187, img: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'dessert' },
+  { id: 'd02', name: 'Molten Chocolate Lava Cake', desc: 'Warm chocolate cake, oozing center, vanilla bean ice cream', price: 289, category: 'desserts', tags: ['bakery', 'restaurant'], veg: true, rating: 4.9, reviews: 298, img: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'dessert' },
+  { id: 'd03', name: 'New York Baked Cheesecake', desc: 'Dense and creamy, graham crust, berry compote', price: 249, category: 'desserts', tags: ['bakery'], veg: true, rating: 4.8, reviews: 213, img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800&q=80&auto=format&fit=crop', customizable: true, customType: 'dessert' },
+  { id: 'd04', name: 'Classic Tiramisu', desc: 'Espresso-soaked ladyfingers, mascarpone cream, cocoa dust', price: 269, category: 'desserts', tags: ['bakery'], veg: true, rating: 4.9, reviews: 176, img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80&auto=format&fit=crop', customizable: false },
+
+  // ---- BEVERAGES ----
+  { id: 'v01', name: 'Signature Cold Brew', desc: 'Slow-steeped 18 hours, smooth and bold', price: 179, category: 'beverages', tags: ['bakery', 'restaurant'], veg: true, rating: 4.6, reviews: 156, img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'v02', name: 'Belgian Hot Chocolate', desc: 'Rich melted dark chocolate, steamed milk, whipped cream', price: 199, category: 'beverages', tags: ['bakery'], veg: true, rating: 4.8, reviews: 134, img: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'v03', name: 'Fresh Watermelon Mint Cooler', desc: 'Muddled mint, fresh watermelon, lime, soda', price: 159, category: 'beverages', tags: ['restaurant'], veg: true, rating: 4.5, reviews: 98, img: 'https://images.unsplash.com/photo-1497534446932-c925b458314e?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'v04', name: 'Classic Cappuccino', desc: 'Double espresso, steamed milk, velvety microfoam', price: 149, category: 'beverages', tags: ['bakery', 'restaurant'], veg: true, rating: 4.7, reviews: 201, img: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'v05', name: 'Fresh Orange & Ginger Juice', desc: 'Cold-pressed orange, ginger kick, no added sugar', price: 169, category: 'beverages', tags: ['restaurant'], veg: true, rating: 4.4, reviews: 67, img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=800&q=80&auto=format&fit=crop', customizable: false },
+
+  // ---- BAKERY BREADS ----
+  { id: 'br01', name: 'Rustic Sourdough Loaf', desc: '48-hour fermented, crackling crust, open crumb', price: 219, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.8, reviews: 156, img: 'https://images.unsplash.com/photo-1585478259715-4d3a5f3ea8d5?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'br02', name: 'Multigrain Seeded Loaf', desc: 'Seven grains and seeds, dense and wholesome', price: 189, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.5, reviews: 89, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'br03', name: 'Chocolate Chip Cookies (6pc)', desc: 'Thick and chewy, molten chocolate chunks, sea salt', price: 249, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.9, reviews: 312, img: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'br04', name: 'Fudge Walnut Brownies (4pc)', desc: 'Dense, fudgy, loaded with toasted walnuts', price: 279, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.8, reviews: 245, img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'br05', name: 'Glazed Ring Donuts (4pc)', desc: 'Pillowy soft, classic vanilla glaze', price: 219, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.6, reviews: 167, img: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80&auto=format&fit=crop', customizable: false },
+  { id: 'br06', name: 'Blueberry Streusel Muffins (3pc)', desc: 'Bursting with blueberries, crumbly streusel top', price: 229, category: 'bakery', tags: ['bakery'], veg: true, rating: 4.7, reviews: 121, img: 'https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=800&q=80&auto=format&fit=crop', customizable: false },
+];
+
+const CUSTOMIZATION_OPTIONS = {
+  pizza: {
+    groups: [
+      { key: 'size', label: 'Size', type: 'single', required: true, options: [
+        { id: 'reg', label: 'Regular (9")', price: 0 },
+        { id: 'med', label: 'Medium (12")', price: 120 },
+        { id: 'lg', label: 'Large (15")', price: 240 },
+      ]},
+      { key: 'crust', label: 'Crust', type: 'single', required: true, options: [
+        { id: 'classic', label: 'Classic Hand-Tossed', price: 0 },
+        { id: 'thin', label: 'Thin Crust', price: 0 },
+        { id: 'cheese', label: 'Cheese-Stuffed Crust', price: 80 },
+      ]},
+      { key: 'cheese', label: 'Cheese', type: 'single', required: false, options: [
+        { id: 'reg-cheese', label: 'Regular Mozzarella', price: 0 },
+        { id: 'extra-cheese', label: 'Extra Cheese', price: 40 },
+        { id: 'vegan-cheese', label: 'Vegan Cheese', price: 60 },
+      ]},
+      { key: 'toppings', label: 'Extra Toppings', type: 'multi', required: false, options: [
+        { id: 'mushroom', label: 'Mushrooms', price: 30 },
+        { id: 'olives', label: 'Olives', price: 35 },
+        { id: 'jalapeno', label: 'Jalapeños', price: 25 },
+        { id: 'onion', label: 'Red Onion', price: 20 },
+        { id: 'bellpepper', label: 'Bell Peppers', price: 25 },
+        { id: 'pepperoni', label: 'Extra Pepperoni', price: 55 },
+      ]},
+    ]
+  },
+  burger: {
+    groups: [
+      { key: 'patty', label: 'Patty', type: 'single', required: true, options: [
+        { id: 'single', label: 'Single Patty', price: 0 },
+        { id: 'double', label: 'Double Patty', price: 90 },
+      ]},
+      { key: 'cheese', label: 'Cheese', type: 'single', required: false, options: [
+        { id: 'no-cheese', label: 'No Cheese', price: 0 },
+        { id: 'cheddar', label: 'Aged Cheddar', price: 30 },
+        { id: 'swiss', label: 'Swiss Cheese', price: 35 },
+      ]},
+      { key: 'sauce', label: 'Extra Sauce', type: 'multi', required: false, options: [
+        { id: 'house', label: 'House Special Sauce', price: 20 },
+        { id: 'chipotle', label: 'Chipotle Mayo', price: 20 },
+        { id: 'bbq', label: 'Smoky BBQ', price: 20 },
+      ]},
+      { key: 'veg', label: 'Extra Vegetables', type: 'multi', required: false, options: [
+        { id: 'lettuce', label: 'Extra Lettuce', price: 10 },
+        { id: 'tomato', label: 'Extra Tomato', price: 10 },
+        { id: 'pickles', label: 'Pickles', price: 15 },
+        { id: 'caramelized-onion', label: 'Caramelized Onions', price: 20 },
+      ]},
+    ]
+  },
+  pasta: {
+    groups: [
+      { key: 'pastaType', label: 'Pasta Type', type: 'single', required: true, options: [
+        { id: 'penne', label: 'Penne', price: 0 },
+        { id: 'spaghetti', label: 'Spaghetti', price: 0 },
+        { id: 'fettuccine', label: 'Fettuccine', price: 20 },
+        { id: 'glutenfree', label: 'Gluten-Free Fusilli', price: 60 },
+      ]},
+      { key: 'sauce', label: 'Sauce', type: 'single', required: true, options: [
+        { id: 'original', label: 'Original Recipe', price: 0 },
+        { id: 'extra-sauce', label: 'Extra Sauce', price: 30 },
+        { id: 'spicy', label: 'Spicy Arrabbiata Twist', price: 25 },
+      ]},
+      { key: 'cheese', label: 'Cheese', type: 'single', required: false, options: [
+        { id: 'reg-parm', label: 'Regular Parmesan', price: 0 },
+        { id: 'extra-parm', label: 'Extra Parmesan', price: 40 },
+      ]},
+      { key: 'protein', label: 'Add Protein', type: 'single', required: false, options: [
+        { id: 'none', label: 'No Extra Protein', price: 0 },
+        { id: 'chicken', label: 'Grilled Chicken', price: 90 },
+        { id: 'prawns', label: 'Tiger Prawns', price: 130 },
+        { id: 'tofu', label: 'Herb Tofu', price: 60 },
+      ]},
+    ]
+  },
+  cake: {
+    groups: [
+      { key: 'size', label: 'Size', type: 'single', required: true, options: [
+        { id: 'half', label: 'Half Kg', price: 0 },
+        { id: 'one', label: '1 Kg', price: 450 },
+        { id: 'two', label: '2 Kg', price: 950 },
+      ]},
+      { key: 'flavor', label: 'Flavor Boost', type: 'single', required: false, options: [
+        { id: 'as-is', label: 'As Described', price: 0 },
+        { id: 'coffee', label: 'Add Coffee Layer', price: 60 },
+        { id: 'fruit', label: 'Add Fresh Fruit Layer', price: 90 },
+      ]},
+      { key: 'filling', label: 'Filling', type: 'single', required: false, options: [
+        { id: 'standard', label: 'Standard Filling', price: 0 },
+        { id: 'ganache', label: 'Extra Ganache', price: 70 },
+        { id: 'fruitpreserve', label: 'Fruit Preserve', price: 80 },
+      ]},
+      { key: 'message', label: 'Message on Cake', type: 'text', required: false, placeholder: 'e.g. Happy Birthday Aanya!' },
+      { key: 'decoration', label: 'Decorations', type: 'multi', required: false, options: [
+        { id: 'candles', label: 'Birthday Candles', price: 25 },
+        { id: 'choc-shavings', label: 'Chocolate Shavings', price: 40 },
+        { id: 'edible-flowers', label: 'Edible Flowers', price: 60 },
+        { id: 'gold-leaf', label: 'Edible Gold Leaf', price: 120 },
+      ]},
+    ]
+  },
+  dessert: {
+    groups: [
+      { key: 'flavor', label: 'Flavor', type: 'single', required: false, options: [
+        { id: 'classic', label: 'Classic', price: 0 },
+        { id: 'seasonal', label: 'Seasonal Special', price: 30 },
+      ]},
+      { key: 'sauce', label: 'Sauce', type: 'multi', required: false, options: [
+        { id: 'chocolate', label: 'Chocolate Sauce', price: 20 },
+        { id: 'caramel', label: 'Salted Caramel', price: 25 },
+        { id: 'berry', label: 'Berry Coulis', price: 25 },
+      ]},
+      { key: 'toppings', label: 'Toppings', type: 'multi', required: false, options: [
+        { id: 'icecream', label: 'Extra Scoop of Ice Cream', price: 60 },
+        { id: 'nuts', label: 'Toasted Nuts', price: 35 },
+        { id: 'sprinkles', label: 'Sprinkles', price: 15 },
+      ]},
+    ]
+  }
+};
+
+const REVIEWS = [
+  { name: 'Ananya Rao', rating: 5, text: 'The truffle mushroom tagliatelle is unreal — restaurant quality that actually delivers well. The packaging kept everything hot.', avatar: 'AR' },
+  { name: 'Vikram Mehta', rating: 5, text: 'Ordered the red velvet cake for my daughter\'s birthday. It looked exactly like the photos and tasted even better. Will order again.', avatar: 'VM' },
+  { name: 'Priya Nair', rating: 4, text: 'Loved the customization on the pizza — got exactly what I wanted with the stuffed crust. Delivery was quick too.', avatar: 'PN' },
+  { name: 'Rohan Kapoor', rating: 5, text: 'Best croissants I\'ve had outside of Paris, honestly. Flaky, buttery, perfectly baked. Now a weekly order for our office.', avatar: 'RK' },
+  { name: 'Sneha Iyer', rating: 5, text: 'The smash burger stack is incredible value and the app made customizing everything so easy. Cart remembered my order after I closed the tab.', avatar: 'SI' },
+  { name: 'Arjun Malhotra', rating: 4, text: 'Great variety between the bakery and restaurant menu in one place. The tiramisu is now my go-to dessert order.', avatar: 'AM' },
+];
+
+</script>
+<script>
+// ============================================================
+// KITCHEN PARADISE — Application Logic
+// ============================================================
+(function () {
+  'use strict';
+
+  // ---------- STATE ----------
+  let cart = [];
+  let currentCategory = 'all';
+  let searchQuery = '';
+  let activeProduct = null;
+  let activeCustomization = { selections: {}, qty: 1 };
+  let toastId = 0;
+
+  const DELIVERY_FEE = 49;
+  const FREE_DELIVERY_THRESHOLD = 799;
+  const DISCOUNT_CODE = 'AMBER10';
+  let discountApplied = false;
+
+  // ---------- PERSISTENCE ----------
+  function loadCart() {
+    try {
+      const raw = localStorage.getItem('amberrye_cart');
+      cart = raw ? JSON.parse(raw) : [];
+    } catch (e) { cart = []; }
+  }
+  function saveCart() {
+    try { localStorage.setItem('amberrye_cart', JSON.stringify(cart)); } catch (e) {}
+  }
+
+  // ---------- HELPERS ----------
+  function formatPrice(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+  function findProduct(id) { return PRODUCTS.find(p => p.id === id); }
+
+  // Verified-reliable fallback images by broad food category, used if a primary image URL ever fails to load.
+  const FALLBACK_IMAGES = {
+    pizza: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80&auto=format&fit=crop',
+    burgers: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&auto=format&fit=crop',
+    pasta: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80&auto=format&fit=crop',
+    starters: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=800&q=80&auto=format&fit=crop',
+    cakes: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800&q=80&auto=format&fit=crop',
+    pastries: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80&auto=format&fit=crop',
+    desserts: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80&auto=format&fit=crop',
+    beverages: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop',
+    bakery: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80&auto=format&fit=crop',
+    default: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop',
+  };
+  function imgWithFallback(src, category) {
+    const fallback = FALLBACK_IMAGES[category] || FALLBACK_IMAGES.default;
+    // onerror clears itself after firing once to avoid loop if fallback also fails
+    return `onerror="this.onerror=null;this.src='${fallback}';"`;
+  }
+  function qs(sel, root) { return (root || document).querySelector(sel); }
+  function qsa(sel, root) { return Array.from((root || document).querySelectorAll(sel)); }
+  function el(html) {
+    const t = document.createElement('template');
+    t.innerHTML = html.trim();
+    return t.content.firstElementChild;
+  }
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  const ICONS = {
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+    star: '<svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>',
+    cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>',
+    search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+    menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
+    empty: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>',
+    leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13V6a2 2 0 0 1 2-2h4a7 7 0 0 1 7 7v1a7 7 0 0 1-6 6.92"/><path d="M4 13c0-4 3-6 8-6"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    truck: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+    award: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+    mapPin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" style="display:none"/><path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6z"/><polyline points="22 6 12 13 2 6"/></svg>',
+    arrowLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+    twitter: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>',
+  };
+
+  // ---------- TOAST ----------
+  function showToast(message, iconKey) {
+    const stack = qs('#toastStack');
+    const id = 'toast-' + (++toastId);
+    const toast = el(`<div class="toast" id="${id}" role="status">${ICONS[iconKey] || ICONS.check}<span>${escapeHtml(message)}</span></div>`);
+    stack.appendChild(toast);
+    setTimeout(() => {
+      toast.classList.add('leaving');
+      setTimeout(() => toast.remove(), 260);
+    }, 2600);
+  }
+
+  // ============================================================
+  // PRODUCT GRID
+  // ============================================================
+  const CATEGORY_LABELS = {
+    all: 'All Items', restaurant: 'Restaurant', bakery: 'Bakery', pizza: 'Pizza',
+    burgers: 'Burgers', pasta: 'Pasta', starters: 'Starters', cakes: 'Cakes',
+    pastries: 'Pastries', desserts: 'Desserts', beverages: 'Beverages'
+  };
+
+  function getFilteredProducts() {
+    let list = PRODUCTS;
+    if (currentCategory !== 'all') {
+      if (currentCategory === 'restaurant' || currentCategory === 'bakery') {
+        list = list.filter(p => p.tags.includes(currentCategory));
+      } else {
+        list = list.filter(p => p.category === currentCategory);
+      }
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      list = list.filter(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.includes(q));
+    }
+    return list;
+  }
+
+  function categoryCount(cat) {
+    if (cat === 'all') return PRODUCTS.length;
+    if (cat === 'restaurant' || cat === 'bakery') return PRODUCTS.filter(p => p.tags.includes(cat)).length;
+    return PRODUCTS.filter(p => p.category === cat).length;
+  }
+
+  function renderCategoryRail() {
+    const cats = ['all', 'restaurant', 'bakery', 'pizza', 'burgers', 'pasta', 'starters', 'cakes', 'pastries', 'desserts', 'beverages'];
+    const railHtml = cats.map(c => `
+      <button data-cat="${c}" class="${c === currentCategory ? 'active' : ''}">
+        <span>${CATEGORY_LABELS[c]}</span>
+        <span class="cat-count">${categoryCount(c)}</span>
+      </button>
+    `).join('');
+    qs('#categoryRail').innerHTML = railHtml;
+    qs('#mobileCatScroll').innerHTML = cats.map(c => `
+      <button data-cat="${c}" class="${c === currentCategory ? 'active' : ''}">${CATEGORY_LABELS[c]}</button>
+    `).join('');
+
+    qsa('#categoryRail button, #mobileCatScroll button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentCategory = btn.dataset.cat;
+        renderCategoryRail();
+        renderProductGrid();
+      });
+    });
+  }
+
+  function productCardHtml(p) {
+    const vegBadge = p.veg !== undefined ? `<span class="pc-veg-badge ${p.veg ? 'veg' : 'nonveg'}" title="${p.veg ? 'Vegetarian' : 'Non-Vegetarian'}"></span>` : '';
+    return `
+      <article class="product-card" data-id="${p.id}">
+        <div class="pc-image-wrap">
+          <img src="${p.img}" alt="${escapeHtml(p.name)}" loading="lazy" width="400" height="300" ${imgWithFallback(p.img, p.category)}>
+          ${vegBadge}
+          <span class="pc-rating">${ICONS.star} ${p.rating}</span>
+        </div>
+        <div class="pc-body">
+          <span class="pc-cat">${CATEGORY_LABELS[p.category] || p.category}</span>
+          <h3 class="pc-name">${escapeHtml(p.name)}</h3>
+          <p class="pc-desc">${escapeHtml(p.desc)}</p>
+          <div class="pc-footer">
+            <span class="pc-price">${formatPrice(p.price)} <small>onwards</small></span>
+            <button class="pc-add-btn" data-action="${p.customizable ? 'customize' : 'quickadd'}" data-id="${p.id}">
+              ${p.customizable ? 'Customize' : ICONS.plus + ' Add'}
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderProductGrid() {
+    const grid = qs('#productGrid');
+    const list = getFilteredProducts();
+    qs('#resultsMeta').textContent = `Showing ${list.length} of ${PRODUCTS.length} items${searchQuery ? ` for "${searchQuery}"` : ''}`;
+
+    if (list.length === 0) {
+      grid.innerHTML = `<div class="no-results" style="grid-column:1/-1">
+        ${ICONS.search}
+        <h3 style="font-size:1.1rem;margin-bottom:6px;">No dishes found</h3>
+        <p>Try a different search term or browse another category.</p>
+      </div>`;
+      return;
+    }
+
+    grid.innerHTML = list.map(productCardHtml).join('');
+
+    qsa('.pc-add-btn', grid).forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const product = findProduct(id);
+        if (btn.dataset.action === 'customize') {
+          openCustomizeModal(product);
+        } else {
+          addSimpleToCart(product, btn);
+        }
+      });
+    });
+  }
+
+  // ============================================================
+  // CUSTOMIZATION MODAL
+  // ============================================================
+  function openCustomizeModal(product) {
+    activeProduct = product;
+    activeCustomization = { selections: {}, qty: 1 };
+    const config = CUSTOMIZATION_OPTIONS[product.customType];
+
+    // set default single selections to first option (or none for optional ones without a natural default)
+    if (config) {
+      config.groups.forEach(g => {
+        if (g.type === 'single' && g.required) {
+          activeCustomization.selections[g.key] = [g.options[0].id];
+        } else if (g.type === 'single' && !g.required) {
+          activeCustomization.selections[g.key] = [g.options[0].id];
+        } else if (g.type === 'multi') {
+          activeCustomization.selections[g.key] = [];
+        } else if (g.type === 'text') {
+          activeCustomization.selections[g.key] = '';
+        }
+      });
+    }
+
+    renderCustomizeModal();
+    const overlay = qs('#customizeOverlay');
+    overlay.classList.add('open');
+    document.body.classList.add('body-lock');
+  }
+
+  function closeCustomizeModal() {
+    qs('#customizeOverlay').classList.remove('open');
+    document.body.classList.remove('body-lock');
+    activeProduct = null;
+  }
+
+  function calcCustomizationTotal() {
+    if (!activeProduct) return 0;
+    let total = activeProduct.price;
+    const config = CUSTOMIZATION_OPTIONS[activeProduct.customType];
+    if (config) {
+      config.groups.forEach(g => {
+        if (g.type === 'text') return;
+        const selected = activeCustomization.selections[g.key] || [];
+        selected.forEach(optId => {
+          const opt = g.options.find(o => o.id === optId);
+          if (opt) total += opt.price;
+        });
+      });
+    }
+    return total * activeCustomization.qty;
+  }
+
+  function getSelectedOptionLabels() {
+    if (!activeProduct) return [];
+    const config = CUSTOMIZATION_OPTIONS[activeProduct.customType];
+    const labels = [];
+    if (config) {
+      config.groups.forEach(g => {
+        if (g.type === 'text') {
+          if (activeCustomization.selections[g.key]) {
+            labels.push(`${g.label}: "${activeCustomization.selections[g.key]}"`);
+          }
+          return;
+        }
+        const selected = activeCustomization.selections[g.key] || [];
+        selected.forEach(optId => {
+          const opt = g.options.find(o => o.id === optId);
+          if (opt) labels.push(opt.price > 0 ? `${opt.label} (+${formatPrice(opt.price)})` : opt.label);
+        });
+      });
+    }
+    return labels;
+  }
+
+  function renderCustomizeModal() {
+    const p = activeProduct;
+    const config = CUSTOMIZATION_OPTIONS[p.customType];
+    const modal = qs('#customModal');
+
+    let groupsHtml = '';
+    if (config) {
+      groupsHtml = config.groups.map(g => {
+        if (g.type === 'text') {
+          const val = activeCustomization.selections[g.key] || '';
+          return `
+            <div class="opt-group">
+              <div class="opt-group-label">${g.label} <span class="optional-tag">optional</span></div>
+              <input type="text" class="opt-text-input" data-group="${g.key}" placeholder="${g.placeholder || ''}" value="${escapeHtml(val)}" maxlength="40">
+            </div>
+          `;
+        }
+        const isMulti = g.type === 'multi';
+        const selected = activeCustomization.selections[g.key] || [];
+        const optsHtml = g.options.map(o => {
+          const isSelected = selected.includes(o.id);
+          return `
+            <div class="opt-row ${isSelected ? 'selected' : ''}" data-group="${g.key}" data-opt="${o.id}" data-multi="${isMulti}" role="${isMulti ? 'checkbox' : 'radio'}" aria-checked="${isSelected}" tabindex="0">
+              <div class="opt-row-left">
+                <div class="opt-control ${isMulti ? 'checkbox' : 'radio'}">
+                  ${isMulti ? ICONS.check : '<span class="radio-dot"></span>'}
+                </div>
+                <span class="opt-name">${o.label}</span>
+              </div>
+              <span class="opt-price ${o.price === 0 ? 'free' : ''}">${o.price === 0 ? 'Free' : '+' + formatPrice(o.price)}</span>
+            </div>
+          `;
+        }).join('');
+        return `
+          <div class="opt-group">
+            <div class="opt-group-label">${g.label} ${g.required ? '<span class="req">Required</span>' : '<span class="optional-tag">optional</span>'}</div>
+            <div class="opt-list">${optsHtml}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    modal.innerHTML = `
+      <div class="modal-hero">
+        <img src="${p.img}" alt="${escapeHtml(p.name)}" ${imgWithFallback(p.img, p.category)}>
+        <button class="modal-close" id="modalCloseBtn" aria-label="Close">${ICONS.close}</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title-row">
+          <h3>${escapeHtml(p.name)}</h3>
+          <span class="modal-base-price">${formatPrice(p.price)}</span>
+        </div>
+        <p class="modal-desc">${escapeHtml(p.desc)}</p>
+        ${groupsHtml}
+        <div class="opt-group">
+          <div class="qty-selector">
+            <span class="qty-label">Quantity</span>
+            <div class="qty-controls">
+              <button id="modalQtyMinus" aria-label="Decrease quantity" ${activeCustomization.qty <= 1 ? 'disabled' : ''}>−</button>
+              <span id="modalQtyVal">${activeCustomization.qty}</span>
+              <button id="modalQtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-total">
+          <div class="mt-label">Total</div>
+          <div class="mt-value" id="modalTotalValue">${formatPrice(calcCustomizationTotal())}</div>
+        </div>
+        <button class="btn btn-primary" id="modalAddToCartBtn">${ICONS.cart} Add to Cart</button>
+      </div>
+    `;
+
+    qs('#modalCloseBtn').addEventListener('click', closeCustomizeModal);
+    qs('#modalQtyMinus').addEventListener('click', () => {
+      if (activeCustomization.qty > 1) { activeCustomization.qty--; updateModalTotals(); }
+    });
+    qs('#modalQtyPlus').addEventListener('click', () => {
+      activeCustomization.qty++; updateModalTotals();
+    });
+    qs('#modalAddToCartBtn').addEventListener('click', addCustomizedToCart);
+
+    qsa('.opt-row', modal).forEach(row => {
+      const handler = () => toggleOption(row.dataset.group, row.dataset.opt, row.dataset.multi === 'true');
+      row.addEventListener('click', handler);
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+      });
+    });
+
+    qsa('.opt-text-input', modal).forEach(input => {
+      input.addEventListener('input', () => {
+        activeCustomization.selections[input.dataset.group] = input.value;
+      });
+    });
+  }
+
+  function toggleOption(groupKey, optId, isMulti) {
+    if (isMulti) {
+      const current = activeCustomization.selections[groupKey] || [];
+      const idx = current.indexOf(optId);
+      if (idx >= 0) current.splice(idx, 1);
+      else current.push(optId);
+      activeCustomization.selections[groupKey] = current;
+    } else {
+      activeCustomization.selections[groupKey] = [optId];
+    }
+    // preserve text input value across re-render (already in state)
+    renderCustomizeModal();
+  }
+
+  function updateModalTotals() {
+    qs('#modalQtyVal').textContent = activeCustomization.qty;
+    qs('#modalQtyMinus').disabled = activeCustomization.qty <= 1;
+    qs('#modalTotalValue').textContent = formatPrice(calcCustomizationTotal());
+  }
+
+  function addCustomizedToCart() {
+    const config = CUSTOMIZATION_OPTIONS[activeProduct.customType];
+    // validate required groups
+    if (config) {
+      for (const g of config.groups) {
+        if (g.required && g.type !== 'text') {
+          const sel = activeCustomization.selections[g.key] || [];
+          if (sel.length === 0) {
+            showToast(`Please select ${g.label}`, 'close');
+            return;
+          }
+        }
+      }
+    }
+    const unitPrice = calcCustomizationTotal() / activeCustomization.qty;
+    const cartItem = {
+      cartId: 'ci_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+      productId: activeProduct.id,
+      name: activeProduct.name,
+      img: activeProduct.img,
+      basePrice: activeProduct.price,
+      unitPrice: unitPrice,
+      qty: activeCustomization.qty,
+      customLabels: getSelectedOptionLabels(),
+    };
+    cart.push(cartItem);
+    saveCart();
+    updateCartBadge();
+    showToast(`${activeProduct.name} added to cart`, 'check');
+    closeCustomizeModal();
+    pulseCartIcon();
+  }
+
+  function addSimpleToCart(product, btnEl) {
+    const existing = cart.find(c => c.productId === product.id && c.customLabels.length === 0);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({
+        cartId: 'ci_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+        productId: product.id,
+        name: product.name,
+        img: product.img,
+        basePrice: product.price,
+        unitPrice: product.price,
+        qty: 1,
+        customLabels: [],
+      });
+    }
+    saveCart();
+    updateCartBadge();
+    showToast(`${product.name} added to cart`, 'check');
+    pulseCartIcon();
+    if (btnEl) {
+      btnEl.classList.add('added');
+      const original = btnEl.innerHTML;
+      btnEl.innerHTML = ICONS.check + ' Added';
+      setTimeout(() => { btnEl.classList.remove('added'); btnEl.innerHTML = original; }, 1100);
+    }
+  }
+
+  function pulseCartIcon() {
+    const btn = qs('#cartIconBtn');
+    btn.style.transform = 'scale(1.15)';
+    setTimeout(() => { btn.style.transform = ''; }, 200);
+  }
+
+  // ============================================================
+  // CART DRAWER
+  // ============================================================
+  function cartSubtotal() {
+    return cart.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
+  }
+  function cartDeliveryFee() {
+    const sub = cartSubtotal();
+    if (sub === 0) return 0;
+    return sub >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
+  }
+  function cartDiscount() {
+    return discountApplied ? Math.round(cartSubtotal() * 0.10) : 0;
+  }
+  function cartTotal() {
+    return cartSubtotal() + cartDeliveryFee() - cartDiscount();
+  }
+  function cartItemCount() {
+    return cart.reduce((sum, item) => sum + item.qty, 0);
+  }
+
+  function updateCartBadge() {
+    const count = cartItemCount();
+    const badge = qs('#cartCount');
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+    if (count > 0) {
+      badge.classList.remove('bump');
+      void badge.offsetWidth;
+      badge.classList.add('bump');
+    }
+  }
+
+  function renderCartDrawer() {
+    const itemsEl = qs('#cartItems');
+    const summaryEl = qs('#cartSummary');
+
+    if (cart.length === 0) {
+      itemsEl.innerHTML = `
+        <div class="cart-empty">
+          ${ICONS.empty}
+          <p>Your cart is empty. Explore our menu to find something delicious.</p>
+          <button class="btn btn-primary" id="cartEmptyBrowseBtn">Browse Menu</button>
+        </div>
+      `;
+      summaryEl.style.display = 'none';
+      qs('#cartEmptyBrowseBtn').addEventListener('click', () => {
+        closeCartDrawer();
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+      });
+      return;
+    }
+
+    summaryEl.style.display = 'block';
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item" data-cart-id="${item.cartId}">
+        <img src="${item.img}" alt="${escapeHtml(item.name)}" ${imgWithFallback(item.img, findProduct(item.productId) ? findProduct(item.productId).category : 'default')}>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${escapeHtml(item.name)}</div>
+          ${item.customLabels.length ? `<div class="cart-item-custom">${item.customLabels.map(escapeHtml).join(' · ')}</div>` : ''}
+          <div class="cart-item-row">
+            <span class="cart-item-price">${formatPrice(item.unitPrice * item.qty)}</span>
+            <div class="cart-qty-controls">
+              <button data-action="dec" aria-label="Decrease quantity">−</button>
+              <span>${item.qty}</span>
+              <button data-action="inc" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="cart-item-remove" data-action="remove">Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    qsa('.cart-item', itemsEl).forEach(row => {
+      const cartId = row.dataset.cartId;
+      row.querySelector('[data-action="dec"]').addEventListener('click', () => changeCartQty(cartId, -1));
+      row.querySelector('[data-action="inc"]').addEventListener('click', () => changeCartQty(cartId, 1));
+      row.querySelector('[data-action="remove"]').addEventListener('click', () => removeCartItem(cartId));
+    });
+
+    const sub = cartSubtotal();
+    const delivery = cartDeliveryFee();
+    const discount = cartDiscount();
+    summaryEl.innerHTML = `
+      <div style="display:flex;gap:8px;margin-bottom:14px;">
+        <input type="text" id="promoInput" placeholder="Promo code" value="${discountApplied ? DISCOUNT_CODE : ''}" ${discountApplied ? 'disabled' : ''}
+          style="flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:var(--radius-s);font-size:0.85rem;background:var(--card);color:var(--ink);">
+        <button class="btn btn-ghost btn-sm" id="promoApplyBtn" ${discountApplied ? 'disabled' : ''}>${discountApplied ? 'Applied' : 'Apply'}</button>
+      </div>
+      <div class="summary-row"><span>Subtotal</span><span>${formatPrice(sub)}</span></div>
+      <div class="summary-row"><span>Delivery fee</span><span>${delivery === 0 ? 'FREE' : formatPrice(delivery)}</span></div>
+      ${discount > 0 ? `<div class="summary-row"><span>Discount (${DISCOUNT_CODE})</span><span class="discount-val">−${formatPrice(discount)}</span></div>` : ''}
+      <div class="summary-row total"><span>Total</span><span>${formatPrice(cartTotal())}</span></div>
+      <div class="cart-actions">
+        <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+        <button class="btn btn-ghost btn-block" id="continueShoppingBtn">Continue Shopping</button>
+      </div>
+    `;
+    qs('#checkoutBtn').addEventListener('click', () => {
+      closeCartDrawer();
+      openCheckout();
+    });
+    qs('#continueShoppingBtn').addEventListener('click', closeCartDrawer);
+    qs('#promoApplyBtn').addEventListener('click', () => {
+      const val = qs('#promoInput').value.trim().toUpperCase();
+      if (val === DISCOUNT_CODE) {
+        discountApplied = true;
+        showToast('Promo code applied — 10% off!', 'check');
+        renderCartDrawer();
+      } else if (val === '') {
+        showToast('Please enter a promo code', 'close');
+      } else {
+        showToast('Invalid promo code', 'close');
+      }
+    });
+  }
+
+  function changeCartQty(cartId, delta) {
+    const item = cart.find(c => c.cartId === cartId);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(c => c.cartId !== cartId);
+    }
+    saveCart();
+    updateCartBadge();
+    renderCartDrawer();
+  }
+
+  function removeCartItem(cartId) {
+    cart = cart.filter(c => c.cartId !== cartId);
+    saveCart();
+    updateCartBadge();
+    renderCartDrawer();
+    showToast('Item removed from cart', 'close');
+  }
+
+  function openCartDrawer() {
+    renderCartDrawer();
+    qs('#cartDrawerOverlay').classList.add('open');
+    qs('#cartDrawer').classList.add('open');
+    document.body.classList.add('body-lock');
+  }
+  function closeCartDrawer() {
+    qs('#cartDrawerOverlay').classList.remove('open');
+    qs('#cartDrawer').classList.remove('open');
+    document.body.classList.remove('body-lock');
+  }
+
+  // ============================================================
+  // CHECKOUT
+  // ============================================================
+  let selectedPayment = 'cod';
+
+  function openCheckout() {
+    if (cart.length === 0) {
+      showToast('Your cart is empty', 'close');
+      return;
+    }
+    renderCheckout();
+    qs('#checkoutOverlay').classList.add('open');
+    document.body.classList.add('body-lock');
+    window.scrollTo(0, 0);
+  }
+  function closeCheckout() {
+    qs('#checkoutOverlay').classList.remove('open');
+    document.body.classList.remove('body-lock');
+  }
+
+  function renderCheckoutSummary() {
+    const sub = cartSubtotal();
+    const delivery = cartDeliveryFee();
+    const discount = cartDiscount();
+    return `
+      <div class="co-items">
+        ${cart.map(item => `
+          <div class="co-item">
+            <img src="${item.img}" alt="${escapeHtml(item.name)}" ${imgWithFallback(item.img, findProduct(item.productId) ? findProduct(item.productId).category : 'default')}>
+            <div class="co-item-info">
+              <div class="co-item-name">${escapeHtml(item.name)} <span style="color:var(--ink-soft);font-weight:500;">×${item.qty}</span></div>
+              ${item.customLabels.length ? `<div class="co-item-meta">${item.customLabels.slice(0,2).map(escapeHtml).join(', ')}${item.customLabels.length > 2 ? '…' : ''}</div>` : ''}
+            </div>
+            <div class="co-item-price">${formatPrice(item.unitPrice * item.qty)}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div style="margin-top:16px;">
+        <div class="summary-row"><span>Subtotal</span><span>${formatPrice(sub)}</span></div>
+        <div class="summary-row"><span>Delivery fee</span><span>${delivery === 0 ? 'FREE' : formatPrice(delivery)}</span></div>
+        ${discount > 0 ? `<div class="summary-row"><span>Discount</span><span class="discount-val">−${formatPrice(discount)}</span></div>` : ''}
+        <div class="summary-row total"><span>Total</span><span>${formatPrice(cartTotal())}</span></div>
+      </div>
+    `;
+  }
+
+  function renderCheckout() {
+    const body = qs('#checkoutBody');
+    body.innerHTML = `
+      <div class="container">
+        <h2 style="font-size:1.9rem;margin-bottom:6px;">Checkout</h2>
+        <p style="color:var(--ink-soft);margin-bottom:32px;">Almost there — just a few details to get your order moving.</p>
+        <div class="checkout-grid">
+          <div>
+            <div class="checkout-form-card">
+              <h3>Delivery Details</h3>
+              <form id="checkoutForm" novalidate>
+                <div class="form-grid">
+                  <div class="form-field full" data-field="fullName">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name">
+                    <div class="form-error">Please enter your name</div>
+                  </div>
+                  <div class="form-field" data-field="phone">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="10-digit mobile number">
+                    <div class="form-error">Please enter a valid 10-digit number</div>
+                  </div>
+                  <div class="form-field" data-field="email">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com">
+                    <div class="form-error">Please enter a valid email</div>
+                  </div>
+                  <div class="form-field full" data-field="address">
+                    <label for="address">Delivery Address</label>
+                    <input type="text" id="address" placeholder="House / Flat No., Street, Landmark">
+                    <div class="form-error">Please enter your address</div>
+                  </div>
+                  <div class="form-field" data-field="city">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="City">
+                    <div class="form-error">Please enter your city</div>
+                  </div>
+                  <div class="form-field" data-field="pincode">
+                    <label for="pincode">Pincode</label>
+                    <input type="text" id="pincode" placeholder="6-digit pincode" maxlength="6">
+                    <div class="form-error">Please enter a valid 6-digit pincode</div>
+                  </div>
+                  <div class="form-field full">
+                    <label for="instructions">Special Instructions (optional)</label>
+                    <textarea id="instructions" placeholder="e.g. Ring the bell twice, leave at the door..."></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="checkout-form-card" style="margin-top:20px;">
+              <h3>Payment Method</h3>
+              <div class="payment-options">
+                <label class="payment-option selected" data-pay="cod">
+                  <div class="opt-control radio"><span class="radio-dot"></span></div>
+                  <div class="payment-option-info"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
+                </label>
+                <label class="payment-option" data-pay="upi">
+                  <div class="opt-control radio"><span class="radio-dot"></span></div>
+                  <div class="payment-option-info"><strong>UPI</strong><span>Pay via Google Pay, PhonePe, Paytm & more</span></div>
+                </label>
+                <label class="payment-option" data-pay="card">
+                  <div class="opt-control radio"><span class="radio-dot"></span></div>
+                  <div class="payment-option-info"><strong>Credit / Debit Card</strong><span>Visa, Mastercard, RuPay accepted</span></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-summary-card">
+            <h3>Order Summary</h3>
+            <div id="checkoutSummaryContent">${renderCheckoutSummary()}</div>
+            <button type="button" class="btn btn-primary btn-block" id="placeOrderBtn" style="margin-top:22px;">Place Order</button>
+            <p style="font-size:0.76rem;color:var(--ink-soft);text-align:center;margin-top:12px;">This is a demo checkout. No real payment will be processed.</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // wire opt-control visual states on the radio-styled opt-controls
+    qsa('.payment-option .opt-control', body).forEach(c => c.classList.add('radio'));
+    // reuse .opt-row selected styling classes via .selected on .payment-option
+    qsa('.opt-control.radio .radio-dot', body).forEach(dot => { dot.style.opacity = 0; });
+    updatePaymentVisual();
+
+    qsa('.payment-option', body).forEach(opt => {
+      opt.addEventListener('click', () => {
+        selectedPayment = opt.dataset.pay;
+        qsa('.payment-option', body).forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        updatePaymentVisual();
+      });
+    });
+
+    qs('#placeOrderBtn').addEventListener('click', handlePlaceOrder);
+    const checkoutForm = qs('#checkoutForm');
+    if (checkoutForm) checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handlePlaceOrder();
+    });
+  }
+
+  function updatePaymentVisual() {
+    qsa('.payment-option').forEach(opt => {
+      const isSel = opt.classList.contains('selected');
+      const control = opt.querySelector('.opt-control');
+      const dot = opt.querySelector('.radio-dot');
+      if (isSel) {
+        control.style.borderColor = 'var(--brick)';
+        control.style.background = 'var(--brick)';
+        if (dot) dot.style.opacity = 1;
+      } else {
+        control.style.borderColor = '';
+        control.style.background = '';
+        if (dot) dot.style.opacity = 0;
+      }
+    });
+  }
+
+  function validateCheckoutForm() {
+    let valid = true;
+    const fields = {
+      fullName: v => v.trim().length >= 2,
+      phone: v => /^[6-9]\d{9}$/.test(v.trim()),
+      email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+      address: v => v.trim().length >= 5,
+      city: v => v.trim().length >= 2,
+      pincode: v => /^\d{6}$/.test(v.trim()),
+    };
+    Object.keys(fields).forEach(key => {
+      const input = qs('#' + key);
+      const wrapper = qs(`[data-field="${key}"]`);
+      const isValid = fields[key](input.value);
+      wrapper.classList.toggle('invalid', !isValid);
+      if (!isValid) valid = false;
+    });
+    return valid;
+  }
+
+  let lastOrder = null;
+
+  function handlePlaceOrder() {
+    if (!validateCheckoutForm()) {
+      showToast('Please fix the highlighted fields', 'close');
+      const firstInvalid = qs('.form-field.invalid');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    const orderNumber = 'AR' + Math.floor(100000 + Math.random() * 899999);
+    const now = new Date();
+    const eta = new Date(now.getTime() + 45 * 60000);
+
+    lastOrder = {
+      orderNumber,
+      items: cart.map(i => ({ ...i })),
+      subtotal: cartSubtotal(),
+      delivery: cartDeliveryFee(),
+      discount: cartDiscount(),
+      total: cartTotal(),
+      payment: selectedPayment,
+      name: qs('#fullName').value.trim(),
+      address: qs('#address').value.trim(),
+      city: qs('#city').value.trim(),
+      pincode: qs('#pincode').value.trim(),
+      eta,
+    };
+
+    cart = [];
+    saveCart();
+    updateCartBadge();
+    discountApplied = false;
+
+    renderOrderConfirmation();
+
+    // Close checkout first, then open confirmation on the next paint.
+    // This avoids two fixed overlays competing during the same frame.
+    closeCheckout();
+    const confirmOverlay = qs('#confirmOverlay');
+    confirmOverlay.classList.remove('open');
+    confirmOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('body-lock');
+
+    requestAnimationFrame(() => {
+      confirmOverlay.classList.add('open');
+      confirmOverlay.scrollTop = 0;
+    });
+  }
+
+  function paymentLabel(p) {
+    return p === 'cod' ? 'Cash on Delivery' : p === 'upi' ? 'UPI' : 'Credit / Debit Card';
+  }
+
+  function renderOrderConfirmation() {
+    const o = lastOrder;
+    const etaStr = o.eta.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    qs('#confirmBody').innerHTML = `
+      <div class="container">
+        <div class="confirm-screen">
+          <div class="confirm-icon">${ICONS.check}</div>
+          <h2>Order Confirmed!</h2>
+          <p class="confirm-order-no">Order number <strong>#${o.orderNumber}</strong> — a confirmation has been noted for ${escapeHtml(o.name)}.</p>
+
+          <div class="confirm-eta">
+            ${ICONS.clock}
+            <div>
+              <strong>Estimated delivery by ${etaStr}</strong>
+              <span>Freshly prepared and on its way in about 45 minutes</span>
+            </div>
+          </div>
+
+          <div class="confirm-card">
+            <h4 style="font-size:1rem;margin-bottom:14px;">Order Details</h4>
+            ${o.items.map(i => `
+              <div class="confirm-row"><span>${escapeHtml(i.name)} ×${i.qty}</span><span>${formatPrice(i.unitPrice * i.qty)}</span></div>
+            `).join('')}
+            <div class="confirm-row"><span>Delivery fee</span><span>${o.delivery === 0 ? 'FREE' : formatPrice(o.delivery)}</span></div>
+            ${o.discount > 0 ? `<div class="confirm-row"><span>Discount</span><span>−${formatPrice(o.discount)}</span></div>` : ''}
+            <div class="confirm-row"><span>Total Paid</span><span>${formatPrice(o.total)}</span></div>
+            <div class="confirm-row"><span>Payment Method</span><span>${paymentLabel(o.payment)}</span></div>
+            <div class="confirm-row"><span>Delivering To</span><span>${escapeHtml(o.address)}, ${escapeHtml(o.city)} - ${escapeHtml(o.pincode)}</span></div>
+          </div>
+
+          <button class="btn btn-primary" id="backToHomeBtn">Continue Browsing</button>
+        </div>
+      </div>
+    `;
+    qs('#backToHomeBtn').addEventListener('click', () => {
+      const overlay = qs('#confirmOverlay');
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('body-lock');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ============================================================
+  // SEARCH OVERLAY
+  // ============================================================
+  function openSearch() {
+    qs('#searchOverlay').classList.add('open');
+    document.body.classList.add('body-lock');
+    setTimeout(() => qs('#searchInput').focus(), 100);
+    renderSearchResults('');
+  }
+  function closeSearch() {
+    qs('#searchOverlay').classList.remove('open');
+    document.body.classList.remove('body-lock');
+    qs('#searchInput').value = '';
+  }
+  function renderSearchResults(query) {
+    const resultsEl = qs('#searchResults');
+    if (!query.trim()) {
+      resultsEl.innerHTML = `<div class="search-empty">Start typing to search our full menu...</div>`;
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    const matches = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)).slice(0, 8);
+    if (matches.length === 0) {
+      resultsEl.innerHTML = `<div class="search-empty">No dishes match "${escapeHtml(query)}"</div>`;
+      return;
+    }
+    resultsEl.innerHTML = matches.map(p => `
+      <div class="search-result-item" data-id="${p.id}" tabindex="0">
+        <img src="${p.img}" alt="${escapeHtml(p.name)}" ${imgWithFallback(p.img, p.category)}>
+        <div>
+          <div class="sri-name">${escapeHtml(p.name)}</div>
+          <div class="sri-price">${formatPrice(p.price)} · ${CATEGORY_LABELS[p.category]}</div>
+        </div>
+      </div>
+    `).join('');
+    qsa('.search-result-item', resultsEl).forEach(item => {
+      item.addEventListener('click', () => {
+        const product = findProduct(item.dataset.id);
+        closeSearch();
+        searchQuery = '';
+        qs('#menuSearchInput').value = '';
+        currentCategory = 'all';
+        renderCategoryRail();
+        renderProductGrid();
+        setTimeout(() => {
+          document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+          if (product.customizable) {
+            setTimeout(() => openCustomizeModal(product), 400);
+          }
+        }, 100);
+      });
+    });
+  }
+
+  // ============================================================
+  // MOBILE DRAWER
+  // ============================================================
+  function openMobileDrawer() {
+    qs('#mobileDrawer').classList.add('open');
+    document.body.classList.add('body-lock');
+    const hb = qs('#hamburgerBtn');
+    if (hb) { hb.classList.add('is-active'); hb.setAttribute('aria-expanded', 'true'); }
+  }
+  function closeMobileDrawer() {
+    qs('#mobileDrawer').classList.remove('open');
+    document.body.classList.remove('body-lock');
+    const hb = qs('#hamburgerBtn');
+    if (hb) { hb.classList.remove('is-active'); hb.setAttribute('aria-expanded', 'false'); }
+  }
+
+  // ============================================================
+  // STATIC SECTIONS: OFFERS, REVIEWS
+  // ============================================================
+  function renderReviews() {
+    qs('#reviewsScroll').innerHTML = REVIEWS.map(r => `
+      <div class="review-card">
+        <div class="review-stars">${Array.from({length: 5}, (_, i) => `<svg viewBox="0 0 20 20" style="${i < r.rating ? '' : 'fill:var(--line-strong)'}"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.9 4.4 18l1.4-6.2L1 7.5l6.4-.6z"/></svg>`).join('')}</div>
+        <p class="review-text">"${escapeHtml(r.text)}"</p>
+        <div class="review-author">
+          <div class="review-avatar">${r.avatar}</div>
+          <div><strong>${escapeHtml(r.name)}</strong><span>Verified Order</span></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  function initScrollReveal() {
+    const targets = qsa('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(t => t.classList.add('in-view'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(t => observer.observe(t));
+  }
+
+  // ============================================================
+  // HEADER SCROLL STATE
+  // ============================================================
+  function initHeaderScroll() {
+    const header = qs('#siteHeader');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      header.classList.toggle('is-scrolled', y > 8);
+      lastScroll = y;
+    }, { passive: true });
+  }
+
+  // ============================================================
+  // NAV ACTIVE STATE (scrollspy-lite)
+  // ============================================================
+  function initNavHighlight() {
+    const sections = ['home', 'menu', 'restaurant', 'bakery', 'about', 'contact'];
+    const navLinks = qsa('.main-nav a');
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  }
+
+  // ============================================================
+  // NEWSLETTER
+  // ============================================================
+  function initNewsletter() {
+    qs('#newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = qs('#newsletterEmail');
+      if (input.value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+        showToast('Thanks for subscribing!', 'check');
+        input.value = '';
+      } else {
+        showToast('Please enter a valid email', 'close');
+      }
+    });
+  }
+
+  // ============================================================
+  // OFFER BUTTONS (link into menu with relevant filter)
+  // ============================================================
+  function initOfferButtons() {
+    qsa('[data-offer-scroll]').forEach(btn => {
+      const handler = (e) => {
+        // Let real <a href="#menu"> links navigate naturally; just apply the filter first.
+        const cat = btn.dataset.offerScroll;
+        if (cat && cat !== 'none') {
+          currentCategory = cat;
+          renderCategoryRail();
+          renderProductGrid();
+        }
+        if (btn.tagName !== 'A') {
+          e.preventDefault();
+          document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+      btn.addEventListener('click', handler);
+      if (btn.getAttribute('role') === 'button') {
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(e); }
+        });
+      }
+    });
+  }
+
+  // ============================================================
+  // GLOBAL EVENT WIRING
+  // ============================================================
+  function initGlobalEvents() {
+    qs('#cartIconBtn').addEventListener('click', openCartDrawer);
+    qs('#cartDrawerOverlay').addEventListener('click', closeCartDrawer);
+    qs('#cartCloseBtn').addEventListener('click', closeCartDrawer);
+
+    qs('#searchIconBtn').addEventListener('click', openSearch);
+    qs('#searchOverlay').addEventListener('click', (e) => { if (e.target.id === 'searchOverlay') closeSearch(); });
+    qs('#searchCloseBtn').addEventListener('click', closeSearch);
+    qs('#searchInput').addEventListener('input', (e) => renderSearchResults(e.target.value));
+
+    qs('#hamburgerBtn').addEventListener('click', openMobileDrawer);
+    qs('#mobileDrawerCloseBtn').addEventListener('click', closeMobileDrawer);
+    qs('#mobileDrawerOverlay').addEventListener('click', closeMobileDrawer);
+    qsa('.mobile-drawer nav a').forEach(a => a.addEventListener('click', closeMobileDrawer));
+
+    qs('#customizeOverlay').addEventListener('click', (e) => { if (e.target.id === 'customizeOverlay') closeCustomizeModal(); });
+
+    qs('#checkoutCloseBtn').addEventListener('click', () => { closeCheckout(); openCartDrawer(); });
+
+    qs('#menuSearchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderProductGrid();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSearch();
+        closeCustomizeModal();
+        closeCartDrawer();
+        closeMobileDrawer();
+        const confirmOverlay = qs('#confirmOverlay');
+        if (confirmOverlay && confirmOverlay.classList.contains('open')) {
+          confirmOverlay.classList.remove('open');
+          confirmOverlay.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('body-lock');
+        }
+      }
+    });
+
+    // Smooth-scroll for all in-page nav links
+    qsa('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          closeMobileDrawer();
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Hero CTAs
+    const exploreMenuBtn = qs('#exploreMenuBtn');
+    if (exploreMenuBtn) exploreMenuBtn.addEventListener('click', () => {
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    });
+    const orderNowBtn = qs('#orderNowBtn');
+    if (orderNowBtn) orderNowBtn.addEventListener('click', openCartDrawer);
+  }
+
+  // ============================================================
+  // OFFER CARD BACKGROUND IMAGE FALLBACK
+  // (CSS background-images can't use onerror, so pre-check via JS Image())
+  // ============================================================
+  function initOfferImageFallback() {
+    const checks = [
+      { selector: '.offer1', primary: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&q=80&auto=format&fit=crop', fallback: FALLBACK_IMAGES.bakery },
+      { selector: '.offer2', primary: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80&auto=format&fit=crop', fallback: FALLBACK_IMAGES.pastries },
+      { selector: '.offer3', primary: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80&auto=format&fit=crop', fallback: FALLBACK_IMAGES.cakes },
+    ];
+    checks.forEach(({ selector, primary, fallback }) => {
+      const testImg = new Image();
+      testImg.onerror = () => {
+        const cardEl = qs(selector);
+        if (cardEl) cardEl.style.setProperty('--offer-bg', `url('${fallback}')`);
+        if (cardEl) {
+          const styleTag = document.createElement('style');
+          styleTag.textContent = `${selector}::before { background-image: url('${fallback}') !important; }`;
+          document.head.appendChild(styleTag);
+        }
+      };
+      testImg.src = primary;
+    });
+  }
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  function init() {
+    loadCart();
+    updateCartBadge();
+    renderCategoryRail();
+    renderProductGrid();
+    renderReviews();
+    initGlobalEvents();
+    initHeaderScroll();
+    initNavHighlight();
+    initNewsletter();
+    initOfferButtons();
+    initOfferImageFallback();
+    initScrollReveal();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+</body>
+</html>
